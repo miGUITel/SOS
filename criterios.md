@@ -59,8 +59,11 @@ c) Se ha aplicado la normativa ambiental.
 **Criterios de evaluación:**  
 a) Se han identificado los principales grupos de interés de la empresa.  
 b) Se han analizado los aspectos ASG materiales, las expectativas de los grupos de interés y la importancia de los aspectos ASG en relación con los objetivos empresariales.
+<<<<<<< HEAD
 c) Se han definido acciones encaminadas a minimizar los impactos negativos y aprovechar las oportunidades que plantean los principales aspectos ASG identificados.
 d) Se han determinado las métricas de evaluación del desempeño de la empresa de acuerdo con los estándares de sostenibilidad más ampliamente utilizados.
 e) Se ha elaborado un informe de sostenibilidad con el plan y los indicadores propuestos.
+=======
+>>>>>>> e6d5a891682649c14c60d4154eaa34449c855877
 
 ---
