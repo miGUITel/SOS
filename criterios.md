@@ -6,17 +6,7 @@
 ---
 
 ### 📘 Resultados de aprendizaje y criterios de evaluación
-
-**1. Identifica los aspectos ambientales, sociales y de gobernanza (ASG) relativos a la sostenibilidad teniendo en cuenta el concepto de desarrollo sostenible y los marcos internacionales que contribuyen a su consecución.**  
-**Criterios de evaluación:**  
-a) Se ha descrito el concepto de sostenibilidad, estableciendo los marcos internacionales asociados al desarrollo sostenible.  
-b) Se han identificado los asuntos ambientales, sociales y de gobernanza que influyen en el desarrollo sostenible de las organizaciones empresariales.  
-c) Se han relacionado los Objetivos de Desarrollo Sostenible (ODS) con su importancia para la consecución de la Agenda 2030.  
-d) Se ha analizado la importancia de identificar los aspectos ASG más relevantes para los grupos de interés de las organizaciones relacionándolos con los riesgos y oportunidades que suponen para la propia organización.  
-e) Se han identificado los principales estándares de métricas para la evaluación del desempeño en sostenibilidad y su papel en la rendición de cuentas que marca la legislación vigente y las futuras regulaciones en desarrollo.  
-f) Se ha descrito la inversión socialmente responsable y el papel de los analistas, inversores, agencias e índices de sostenibilidad en el fomento de la sostenibilidad.
-
----
+(los RA se han reordenado según se trabajarán en el módulo)
 
 **2. Caracteriza los retos ambientales y sociales a los que se enfrenta la sociedad, describiendo los impactos sobre las personas y los sectores productivos y proponiendo acciones para minimizarlos.**  
 **Criterios de evaluación:**  
@@ -25,14 +15,6 @@ b) Se han relacionado los retos ambientales y sociales con el desarrollo de la a
 c) Se ha analizado el efecto de los impactos ambientales y sociales sobre las personas y los sectores productivos.  
 d) Se han identificado las medidas y acciones encaminadas a minimizar los impactos ambientales y sociales.  
 e) Se ha analizado la importancia de establecer alianzas y trabajar de manera transversal y coordinada para abordar con éxito los retos ambientales y sociales.
-
----
-
-**3. Establece la aplicación de criterios de sostenibilidad en el desempeño profesional y personal, identificando los elementos necesarios.**  
-**Criterios de evaluación:**  
-a) Se han identificado los ODS más relevantes para la actividad profesional que realiza.  
-b) Se han analizado los riesgos y oportunidades que representan los ODS.  
-c) Se han identificado las acciones necesarias para atender algunos de los retos ambientales y sociales desde la actividad profesional y el entorno personal.
 
 ---
 
@@ -52,6 +34,25 @@ f) Se han identificado los procesos de producción y los criterios de sostenibil
 a) Se ha evaluado el impacto de las actividades personales y profesionales.  
 b) Se han aplicado estrategias sostenibles.  
 c) Se ha aplicado la normativa ambiental.
+
+---
+
+**1. Identifica los aspectos ambientales, sociales y de gobernanza (ASG) relativos a la sostenibilidad teniendo en cuenta el concepto de desarrollo sostenible y los marcos internacionales que contribuyen a su consecución.**  
+**Criterios de evaluación:**  
+a) Se ha descrito el concepto de sostenibilidad, estableciendo los marcos internacionales asociados al desarrollo sostenible.  
+b) Se han identificado los asuntos ambientales, sociales y de gobernanza que influyen en el desarrollo sostenible de las organizaciones empresariales.  
+c) Se han relacionado los Objetivos de Desarrollo Sostenible (ODS) con su importancia para la consecución de la Agenda 2030.  
+d) Se ha analizado la importancia de identificar los aspectos ASG más relevantes para los grupos de interés de las organizaciones relacionándolos con los riesgos y oportunidades que suponen para la propia organización.  
+e) Se han identificado los principales estándares de métricas para la evaluación del desempeño en sostenibilidad y su papel en la rendición de cuentas que marca la legislación vigente y las futuras regulaciones en desarrollo.  
+f) Se ha descrito la inversión socialmente responsable y el papel de los analistas, inversores, agencias e índices de sostenibilidad en el fomento de la sostenibilidad.
+
+---
+
+**3. Establece la aplicación de criterios de sostenibilidad en el desempeño profesional y personal, identificando los elementos necesarios.**  
+**Criterios de evaluación:**  
+a) Se han identificado los ODS más relevantes para la actividad profesional que realiza.  
+b) Se han analizado los riesgos y oportunidades que representan los ODS.  
+c) Se han identificado las acciones necesarias para atender algunos de los retos ambientales y sociales desde la actividad profesional y el entorno personal.
 
 ---
 
