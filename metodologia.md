@@ -16,7 +16,3 @@ El módulo se organiza en **20 sesiones** aproximadamente.
 * **Cierre del módulo:** en las últimas sesiones, cada grupo realizará una **presentación pública** de su web, compartiendo conclusiones y propuestas con el resto de la clase.
 
 Esta metodología combina la **reflexión individual y grupal**, la **investigación aplicada**, la **creación de un producto digital** y la **exposición oral**, asegurando la adquisición de los resultados de aprendizaje del módulo.
-
----
-
-¿Quieres que lo deje así de directo para usarlo en la programación, o prefieres que le dé un poco más de **tono académico** (por ejemplo, mencionando metodologías activas, aprendizaje basado en proyectos, trabajo cooperativo…)?
