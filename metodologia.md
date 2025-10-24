@@ -5,6 +5,7 @@ El módulo se organiza en **20 sesiones** aproximadamente.
 * **Inicio de cada sesión (5–10 min):** se dedicará a comentar un aspecto **biológico, ecológico o social** relacionado con la sostenibilidad, con el fin de concienciar al alumnado sobre la importancia de este ámbito en la vida cotidiana y profesional.
 
 * **Trabajo principal:** el alumnado trabajará en **grupos** para desarrollar un **producto final** que consistirá en una **página web** que se deberá publicar en gitHub. Este producto se entregará en **tres fases** a lo largo del curso, de forma que se asegure un seguimiento y retroalimentación continua.
+
 * Además se mantendrá un diario en el que se reflejará al finalizar cada una de las sesiones el trabajo realizado, subiendo al menos un commit por sesión.
 
 * **Contenido del producto:**
