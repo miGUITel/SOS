@@ -9,7 +9,7 @@
 ### 24/10/2025
 ¿LOS HUMANOS K o R?
 ### 31/10/2025
-
+¿Es la tierra infinita?
 ### 07/11/2025
 
 ### 14/11/2025
