@@ -6,7 +6,9 @@
 ---
 
 ### 📘 Resultados de aprendizaje y criterios de evaluación
-(los RA se han reordenado según se trabajarán en el módulo)
+[Volver al inicio](README.md)
+
+Los identificadores de RA y CE se corresponden con la hoja RA de `26 SOS.xlsx`. El orden de trabajo del curso se recoge en la [programación por sesiones](programacion_sesiones.md).
 
 **2. Caracteriza los retos ambientales y sociales a los que se enfrenta la sociedad, describiendo los impactos sobre las personas y los sectores productivos y proponiendo acciones para minimizarlos.**  
 **Criterios de evaluación:**  
@@ -31,9 +33,15 @@
 
 **5. Realiza actividades sostenibles minimizando el impacto de las mismas en el medio ambiente.**  
 **Criterios de evaluación:**  
-1. a) Se ha evaluado el impacto de las actividades personales y profesionales.  
-2. b) Se han aplicado estrategias sostenibles.  
-3. c) Se ha aplicado la normativa ambiental.
+1. a) Se ha caracterizado el modelo de producción y consumo actual.  
+2. b) Se han identificado los principios de la economía verde y circular.  
+3. c) Se han contrastado los beneficios de la economía verde y circular frente al modelo clásico de producción.  
+4. d) Se ha evaluado el impacto de las actividades personales y profesionales.  
+5. e) Se han aplicado principios de ecodiseño.  
+6. f) Se han aplicado estrategias sostenibles.  
+7. g) Se ha analizado el ciclo de vida del producto.  
+8. h) Se han identificado los procesos de producción y los criterios de sostenibilidad aplicados.  
+9. i) Se ha aplicado la normativa ambiental.
 
 ---
 
