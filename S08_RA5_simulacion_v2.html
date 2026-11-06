@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173d31">
+<meta name="description" content="Una simulación educativa para comparar el impacto de las decisiones personales y profesionales en una oficina informática.">
+<title>Una jornada informática · Decide y compara · v2</title>
+<style>:root{--bg:#f3f5f1;--paper:#fff;--forest:#173d31;--forest-2:#255947;--ink:#20352d;--muted:#617168;--line:#dce4da;--lime:#dbeaab;--lime-dark:#6a8128;--soft:#edf3e7;--warn:#8b5b11;--warn-bg:#fff6df;--success:#255f42;--success-bg:#eaf5ed;--shadow:0 10px 34px #183a2910;--radius:19px;font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;font-size:16px;line-height:1.55}button,input,select,textarea{font:inherit}button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:var(--forest-2);text-underline-offset:3px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #8aa844;outline-offset:4px}button:disabled{cursor:not-allowed;opacity:.5}h1,h2,h3,h4,p{margin-top:0}h1,h2,h3,h4{color:var(--forest);line-height:1.16}p{margin-bottom:1rem}ul,ol{padding-left:1.35rem}li+li{margin-top:.4rem}[hidden]{display:none!important}
+.app-shell{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--forest);color:#fff;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:33px 20px 22px;overflow-y:auto}.brand{display:flex;align-items:center;gap:12px;margin:0 9px 13px}.brand-mark{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:var(--lime);color:var(--forest);flex-shrink:0;font-size:23px;font-weight:800}.brand-name{font-size:1.13rem;line-height:1.2;font-weight:760;letter-spacing:-.03em}.brand-name small{display:block;color:#bccfbf;font-size:.72rem;font-weight:500;letter-spacing:.04em;margin-top:5px}.course-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.13em;color:#c0d0bc;padding:11px 11px 25px}.step-nav{display:flex;flex-direction:column;gap:9px}.step-link{display:flex;align-items:center;gap:12px;text-align:left;width:100%;padding:15px 12px;border:1px solid transparent;background:transparent;color:#d9e5d9;border-radius:13px;min-height:67px;transition:background .16s,border-color .16s}.step-link:hover{background:#ffffff0c}.step-link.active{background:var(--lime);color:var(--forest)}.step-link.active .ref{background:#173d3110;color:var(--forest);border-color:#173d3126}.step-link.done:not(.active){border-color:#7fa88755}.step-no{font-size:.79rem;font-weight:750;flex:0 0 28px;width:28px;height:28px;border:1px solid #dbe5cf55;display:grid;place-items:center;border-radius:50%}.active .step-no{border-color:#173d3150;background:#ffffff50}.done .step-no{background:#ffffff15}.step-copy{font-size:.88rem;font-weight:650;line-height:1.3}.step-copy small{display:block;font-size:.7rem;font-weight:400;opacity:.75;margin-top:4px}.nav-footer{margin-top:auto;padding:29px 11px 0;font-size:.74rem;color:#bdd0c0}.nav-footer p{margin-bottom:.6rem}.sidebar .ref{background:#ffffff0d;border-color:#ffffff25;color:#caddbf}.main-shell{min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:87px;padding:20px 42px;border-bottom:1px solid var(--line);background:#f9faf7}.crumb{color:var(--muted);font-size:.82rem;font-weight:550}.top-actions{display:flex;align-items:center;flex-wrap:wrap;gap:7px}.workspace{max-width:1220px;margin:0 auto;padding:38px 42px 28px;display:grid;grid-template-columns:minmax(0,1fr);gap:26px}.workspace:has(.side-panel){grid-template-columns:minmax(0,1fr) 250px}.content{min-width:0}.hero{margin-bottom:27px}.eyebrow{font-size:.71rem;text-transform:uppercase;font-weight:800;letter-spacing:.14em;color:var(--lime-dark);margin-bottom:14px;display:flex;align-items:center;gap:8px}.section-title{font-size:clamp(2.05rem,3.2vw,3.2rem);font-weight:780;letter-spacing:-.05em;line-height:1.07;margin-bottom:18px;max-width:790px}.section-title .ref{vertical-align:middle;transform:translateY(-4px)}.lead{font-size:1.06rem;line-height:1.7;color:#54665b;max-width:710px;margin-bottom:20px}.scene-icon{display:inline-grid;place-items:center;width:47px;height:47px;border-radius:15px;background:var(--soft);color:var(--forest);font-size:1.4rem;margin-bottom:15px}.hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(190px,.7fr);align-items:center;gap:28px}.intro-illustration{width:100%;max-width:310px;justify-self:end;display:block}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:25px;margin-bottom:22px;box-shadow:var(--shadow)}.card h2{font-size:1.25rem;letter-spacing:-.025em;margin-bottom:16px}.card h3{font-size:1.04rem;letter-spacing:-.015em;margin-bottom:11px}.card>:last-child{margin-bottom:0}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:13px}.card-head h2,.card-head h3{margin-bottom:0}.card-grid,.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:20px 0}.card-grid .card,.cards-3 .card{margin:0;padding:20px;box-shadow:none}.fact{padding:18px 17px;background:#f1f5ed;border:1px solid #e0e8d8;border-radius:13px;min-width:0}.fact-value{display:block;font-size:1.7rem;font-weight:780;letter-spacing:-.045em;line-height:1.1;color:var(--forest);margin-bottom:8px}.fact-label{display:block;font-size:.79rem;color:var(--muted);line-height:1.4}.ref{display:inline-flex;align-items:center;justify-content:center;gap:0;background:#f2f4ee;color:#61754c;border:1px solid #dce3d1;border-radius:5px;padding:1px 5px;vertical-align:middle;font-family:"Cascadia Code",Consolas,monospace;font-size:10px;font-weight:550;line-height:1.55;letter-spacing:0;white-space:nowrap;text-transform:none;margin-right:6px;user-select:all;text-decoration:none;cursor:copy}.ref:hover{background:#dceaaf;border-color:#a6ba70;color:var(--forest)}.field{margin:17px 0}.field>label,.field>legend{display:block;font-size:.87rem;color:var(--forest);font-weight:700;margin-bottom:9px}.field textarea,.field input[type=text],.field select,textarea,select{width:100%;border:1px solid #cfd9cc;border-radius:11px;background:#fbfcf9;color:var(--ink);padding:12px 13px;min-height:46px;transition:border-color .16s,box-shadow .16s}.field textarea,textarea{resize:vertical;min-height:96px;line-height:1.55}.field textarea:focus,.field input:focus,.field select:focus{border-color:#7e9a5e;background:#fff;box-shadow:0 0 0 3px #dbeaab55}.helper{font-size:.78rem;color:var(--muted);margin:7px 0 0;line-height:1.5}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.options{display:grid;gap:11px;margin:17px 0}.option-card{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);align-items:start;gap:11px;padding:17px 18px;border:1.5px solid #dce4d6;border-radius:14px;background:#fff;cursor:pointer;transition:border-color .16s,background .16s,box-shadow .16s}.option-card:hover{border-color:#a0b584;background:#fcfdf9}.option-card.selected,.option-card:has(input:checked){border-color:#547d42;background:#f0f6e7;box-shadow:0 0 0 1px #547d4225}.option-card input[type=radio],.option-card input[type=checkbox]{accent-color:var(--forest);width:18px;height:18px;margin:4px 0 0}.option-title{display:block;color:var(--forest);font-weight:720;font-size:.91rem;line-height:1.45;margin-bottom:5px}.option-description{display:block;color:#5b6b60;font-size:.83rem;line-height:1.55}.option-metric{display:inline-block;font-size:.72rem;color:#59733c;background:#edf2e4;border-radius:5px;padding:3px 7px;margin-top:9px}.decision{margin-top:26px;padding-top:25px;border-top:1px solid var(--line)}.decision:first-child{margin-top:0;padding-top:0;border-top:0}.decision-number{display:inline-flex;align-items:center;gap:7px;color:#607246;font-size:.7rem;text-transform:uppercase;font-weight:800;letter-spacing:.1em;margin-bottom:11px}.status-pill,.tag{display:inline-flex;align-items:center;gap:6px;font-size:.69rem;font-weight:750;line-height:1.4;padding:5px 9px;border-radius:100px;background:var(--soft);color:#4f6a39;white-space:normal}.tag{border-radius:6px}.status-pill.warning,.tag.warning{background:var(--warn-bg);color:var(--warn)}.status-pill.success,.tag.success{background:var(--success-bg);color:var(--success)}.notice{padding:16px 18px;border-radius:13px;background:var(--soft);border:1px solid #dbe5cf;color:#40583c;font-size:.86rem;line-height:1.6;margin:18px 0}.notice p:last-child{margin-bottom:0}.notice.warning{background:var(--warn-bg);border-color:#eddbaf;color:#795717}.notice.success{background:var(--success-bg);border-color:#c8dfce;color:var(--success)}.feedback{margin-top:20px;padding:20px;border-radius:14px;border:1px solid #d4e1c9;background:#f1f6ea}.feedback h3{margin-bottom:10px}.feedback p{font-size:.9rem}.feedback.warning{background:var(--warn-bg);border-color:#ecd6a1}.feedback.success{background:var(--success-bg);border-color:#c9dfcb}.feedback-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}.metric{padding:15px;border:1px solid var(--line);border-radius:12px;background:#fff}.metric-value{font-size:1.5rem;font-weight:780;letter-spacing:-.035em;color:var(--forest);line-height:1.2}.metric-unit{font-size:.75rem;font-weight:500;letter-spacing:0;color:var(--muted);margin-left:3px}.muted{color:var(--muted)}.small,small{font-size:.78rem}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:45px;border:1px solid #ced9c8;border-radius:10px;padding:10px 15px;background:#fff;color:var(--forest);font-size:.82rem;font-weight:700;line-height:1.4;transition:background .15s,transform .15s;white-space:normal;text-decoration:none}.btn:hover{background:#edf3e7}.btn:active{transform:translateY(1px)}.btn.primary{background:var(--forest);border-color:var(--forest);color:#fff}.btn.primary:hover{background:#285744}.btn.primary .ref{background:#ffffff10;border-color:#ffffff30;color:#e1edcb}.btn.secondary{background:var(--lime);border-color:#cadc98;color:var(--forest)}.btn.secondary:hover{background:#d1e29c}.btn.ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--muted);padding:9px 10px}.btn.ghost:hover{background:#e9efe3;color:var(--forest)}.action-row,.next-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:20px}.next-row{padding:7px 0 19px}.resource{background:#f8faf5;border:1px solid #dce6d4;border-radius:12px;margin:16px 0;overflow:hidden}.resource summary{padding:15px 18px;cursor:pointer;font-size:.87rem;font-weight:700;color:var(--forest)}.resource[open] summary{border-bottom:1px solid #e0e7d8}.resource>div,.resource .resource-content{padding:18px}.resource p,.resource li{font-size:.85rem}.formula{font-family:"Cascadia Code",Consolas,monospace;background:#eaf0e2;border:1px solid #dce6d1;padding:13px 15px;border-radius:9px;font-size:.81rem;overflow-wrap:anywhere;margin:14px 0}.table-wrap{width:100%;overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:12px}.data-table{width:100%;border-collapse:collapse;font-size:.83rem;line-height:1.5}.data-table th,.data-table td{padding:13px 15px;text-align:left;vertical-align:top;border-bottom:1px solid #e4eadf}.data-table th{background:#eff4e8;color:#466039;font-size:.74rem;font-weight:750}.data-table tr:last-child td{border-bottom:0}.data-table td strong{color:var(--forest)}.norm-card{background:#f8f7ee;border:1px solid #e7e1c9;border-left:4px solid #a5ae65;padding:18px 20px;border-radius:0 12px 12px 0;margin:14px 0;font-size:.86rem}.norm-card p:last-child{margin-bottom:0}.board{display:grid;gap:12px}.side-panel{align-self:start;position:sticky;top:24px;min-width:0}.side-panel .card{padding:20px;box-shadow:none}.side-panel h2{font-size:.95rem;line-height:1.35}.side-panel .metric{padding:12px 0;border:0;border-top:1px solid var(--line);border-radius:0}.side-panel .metric-value{font-size:1.2rem}.side-panel .helper{font-size:.71rem}.progress-track{height:6px;border-radius:100px;background:#e2e9d9;overflow:hidden;margin:13px 0}.progress-fill{height:100%;background:#91a960;border-radius:100px;transition:width .25s}.report-card{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:15px;padding:22px;margin:16px 0}.report-card h3{font-size:1.05rem;margin-bottom:14px}.report-card p{font-size:.88rem;white-space:pre-wrap;overflow-wrap:anywhere}.report-card dl{margin:0}.report-card dt{font-size:.75rem;font-weight:750;color:#65764e;margin-top:13px}.report-card dd{font-size:.87rem;margin:4px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.export-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.footer-note{font-size:.74rem;color:var(--muted);padding:18px 0;line-height:1.6}.mobile-title{display:none}.toast{position:fixed;bottom:24px;left:calc(50% + 130px);transform:translateX(-50%);background:var(--forest);color:#fff;padding:13px 20px;border-radius:12px;box-shadow:0 10px 35px #173d3133;z-index:80;max-width:calc(100vw - 32px);font-size:.83rem;text-align:center}.validation{font-size:.81rem;color:#9b4725;margin:9px 0;padding:10px 13px;border:1px solid #e7c5b0;background:#fff4ed;border-radius:9px}.is-invalid{border-color:#bd6c42!important}.empty{border:1px dashed #ccd8c0;background:#f6f8f2;border-radius:12px;padding:23px;text-align:center;color:var(--muted);font-size:.86rem}.check-row{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;padding:9px 0}.check-row input{accent-color:var(--forest);width:18px;height:18px;margin-top:4px;flex-shrink:0}.modal-backdrop{position:fixed;inset:0;background:#102c246e;z-index:90;display:grid;place-items:center;padding:20px;backdrop-filter:blur(3px)}.modal{width:min(540px,100%);max-height:90vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:21px;padding:29px;box-shadow:0 30px 90px #102c2450}.modal h2{font-size:1.5rem;letter-spacing:-.035em}.modal-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:23px}.flow-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:20px 0}.flow-node{border:1px solid #d9e4cc;background:#f1f6e9;border-radius:13px;padding:16px;font-size:.8rem;line-height:1.55}.flow-node strong{display:block;color:var(--forest);margin-bottom:7px}.keycap{font-family:Consolas,monospace;font-size:.73rem;padding:1px 5px;background:#eff2e9;border:1px solid #d7dfcf;border-bottom-width:2px;border-radius:4px}.field fieldset,fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}svg{max-width:100%}::selection{background:#dbeaab;color:#173d31}
+@media(min-width:1600px){.workspace{padding-top:49px}.topbar{padding-left:max(42px,calc((100vw - 260px - 1136px)/2));padding-right:max(42px,calc((100vw - 260px - 1136px)/2))}}
+@media(max-width:1240px){.workspace:has(.side-panel){grid-template-columns:minmax(0,1fr)}.side-panel{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.side-panel .card{margin:0}.workspace{padding:31px 30px}.topbar{padding:18px 30px}.hero-grid{grid-template-columns:minmax(0,1.6fr) minmax(160px,.7fr);gap:15px}.section-title{font-size:2.5rem}}
+@media(max-width:950px){.app-shell{grid-template-columns:216px minmax(0,1fr)}.sidebar{padding:25px 13px 20px}.step-link{gap:9px;padding:13px 9px}.step-copy{font-size:.81rem}.brand{margin-left:5px;margin-right:5px;gap:9px}.brand-name{font-size:1rem}.brand-mark{width:37px;height:37px;border-radius:12px}.course-label{font-size:.65rem;padding-left:7px}.workspace{padding:28px 24px}.topbar{padding:16px 24px;align-items:flex-start;gap:12px}.top-actions{justify-content:flex-end}.topbar .btn{font-size:.74rem;padding:8px 10px}.hero-grid{grid-template-columns:1fr}.intro-illustration{max-width:240px;justify-self:center;margin:-10px 0 4px}.section-title{font-size:2.35rem}.card{padding:21px}.cards-3,.card-grid{gap:9px}.card-grid .card,.cards-3 .card{padding:15px}.toast{left:calc(50% + 108px)}}
+@media(max-width:720px){.app-shell{display:block}.sidebar{position:relative;width:100%;height:auto;padding:20px 18px 14px;overflow:visible}.brand{margin:0 0 16px}.brand-mark{width:36px;height:36px}.brand-name{font-size:1.05rem}.brand-name small{display:none}.course-label,.nav-footer{display:none}.step-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}.step-link{min-height:62px;padding:8px 3px;gap:4px;flex-direction:column;text-align:center;justify-content:center;border-radius:9px}.step-no{width:22px;height:22px;flex-basis:22px;font-size:.66rem}.step-copy{font-size:.65rem;line-height:1.2}.step-copy small{display:none}.step-link .ref{font-size:8px;margin-right:2px;padding:0 3px}.topbar{min-height:69px;padding:13px 18px;align-items:center;gap:9px}.crumb{font-size:.72rem}.top-actions{gap:2px}.topbar .btn{padding:7px;font-size:.69rem;min-height:40px}.workspace{padding:25px 18px 20px;gap:20px}.section-title{font-size:2.2rem;letter-spacing:-.045em}.lead{font-size:.96rem;line-height:1.65}.hero{margin-bottom:21px}.hero-grid{gap:7px}.intro-illustration{max-width:220px;justify-self:center}.card{padding:20px 17px;margin-bottom:17px;border-radius:15px}.card h2{font-size:1.15rem}.card-head{gap:9px;flex-wrap:wrap}.form-grid{grid-template-columns:1fr}.card-grid,.cards-3{grid-template-columns:1fr;gap:10px}.fact{display:flex;flex-direction:column;padding:15px 16px}.fact-value{font-size:1.45rem}.feedback-grid{gap:9px}.feedback{padding:17px}.metric{padding:12px}.metric-value{font-size:1.25rem}.side-panel{display:block}.side-panel .card{margin-bottom:15px}.flow-strip{grid-template-columns:1fr;gap:9px}.flow-node{padding:14px}.option-card{padding:15px 13px;gap:9px}.option-title{font-size:.86rem}.option-description{font-size:.8rem}.ref{font-size:9px;padding:1px 4px;margin-right:5px}.data-table{font-size:.76rem}.data-table td,.data-table th{padding:11px 12px}.action-row,.next-row{align-items:stretch;gap:10px}.action-row .btn,.next-row .btn{flex:1 1 auto}.export-row .btn{flex:1 1 140px}.toast{left:50%;bottom:15px;width:max-content}.modal{padding:24px 20px}.modal h2{font-size:1.35rem}.report-card{padding:19px 16px}.notice{padding:14px 15px}.eyebrow{font-size:.66rem;letter-spacing:.12em}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{@page{size:A4;margin:16mm}body{background:#fff;color:#222;font-size:10pt}.app-shell{display:block}.sidebar,.topbar,.top-actions,.action-row,.next-row,.export-row,.toast,.modal-backdrop,.side-panel,.nav-footer,.btn,.no-print{display:none!important}.workspace{display:block;max-width:none;padding:0;margin:0}.content{width:100%}.hero,.card,.report-card{box-shadow:none;border-color:#ccc;break-inside:avoid}.section-title{font-size:25pt;max-width:none}.lead{font-size:11pt}.ref{display:inline-flex!important;background:#f5f5f5!important;color:#444!important;border-color:#bbb!important;print-color-adjust:exact;-webkit-print-color-adjust:exact;font-size:7pt}.card,.report-card{padding:12pt;margin:10pt 0;border-radius:7pt}.card-grid,.cards-3,.feedback-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.data-table{font-size:9pt}.notice,.feedback,.fact,.norm-card{background:#f7f7f7!important;color:#222!important;break-inside:avoid}.report-card p,.report-card dd{font-size:10pt}.report-card h3{font-size:13pt}.resource{break-inside:avoid}.resource>div{display:block!important}.footer-note{font-size:8pt}a{color:#222}input,select,textarea{border-color:#aaa!important}.field textarea{min-height:50pt}}
+.skip-link{position:fixed;left:16px;top:-100px;z-index:1000;background:#fff;padding:10px 18px;border:2px solid var(--forest);border-radius:9px}.skip-link:focus{top:12px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.nav-intro{color:#c1d2c3;padding:0 11px;font-size:.78rem;line-height:1.65;margin-bottom:25px}.brand .course-label{padding:5px 0 0;font-size:.6rem;letter-spacing:.03em}.step-copy{min-width:0}.step-copy strong{display:block;font-weight:650}.step-copy>span{display:block;font-size:.68rem;font-weight:400;line-height:1.4;opacity:.8;margin-top:5px}.hero>.hero-grid{grid-template-columns:minmax(0,1fr) auto;gap:14px}.hero .scene-icon{width:52px;height:52px;align-self:start;margin-top:4px}.section-title em{font-style:normal;color:#6a8128}.card-grid:not(.cards-3){grid-template-columns:repeat(2,minmax(0,1fr))}.norm-card{background:#edf3e7;border:1px solid #cddac3;border-radius:19px;padding:25px;margin-bottom:22px}.norm-card h2,.notice h3{font-size:1.2rem;letter-spacing:-.025em}.norm-card p{font-size:.93rem}.board{border:1px solid var(--line);border-radius:18px;background:#fff;padding:22px}.board-title{font-size:1.05rem;letter-spacing:-.02em;line-height:1.25;margin-bottom:20px}.board-item{padding:14px 0;border-top:1px solid var(--line);font-size:.79rem;position:relative}.board-item>span:not(.ref){display:block;color:var(--muted);margin:5px 0}.board-item strong{display:block;line-height:1.4;font-size:.85rem}.board>p{margin-top:17px;margin-bottom:0}.option-content{min-width:0;display:block}.option-title,.option-description,.option-metric{display:block}.metric>span,.metric>strong{display:block}.metric-value small{font-size:.75rem;font-weight:500}.flow-node>strong,.flow-node>span:not(.ref){display:block}.flow-node>span:not(.ref){font-size:.85rem;margin-top:5px}.ref{user-select:all}.toast{z-index:1200}.modal{max-height:85vh;overflow-y:auto;border:1px solid var(--line);width:min(760px,calc(100vw - 32px));box-shadow:0 30px 120px #102c3455}.modal::backdrop{background:#122d22aa;backdrop-filter:blur(3px)}.modal h2{font-size:1.5rem}.modal h3{font-size:1.1rem}.modal-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.validation{padding:12px 14px;background:var(--warn-bg);border-radius:9px;margin-bottom:12px;color:#74410a}.footer-note{padding:20px 42px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--line)}.report-card p{overflow-wrap:anywhere}.option-card input{accent-color:var(--forest)}.step-link .ref{white-space:nowrap}.norm-card .small{line-height:1.6}
+@media(min-width:1241px){.side-panel{align-self:start;position:sticky;top:24px}}@media(max-width:1240px){.side-panel{display:block}.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px}.board-title,.board>p{grid-column:1/-1}}@media(max-width:720px){.nav-intro{display:none}.step-copy>span{display:none}.step-copy strong{font-size:.62rem}.step-link{min-height:78px}.sidebar .step-link .ref{display:block;width:max-content;margin:0 auto 3px}.topbar .tag{display:none}.card-grid:not(.cards-3){grid-template-columns:1fr}.board{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-note{padding:18px}.hero>.hero-grid{grid-template-columns:1fr}.hero .scene-icon{display:none}.section-title{font-size:2.15rem}.norm-card{padding:20px 17px}}
+@media print{.skip-link,.modal,.footer-note{display:none!important}.hero{break-inside:auto}.hero .scene-icon{display:none}.field textarea{height:auto;min-height:65px;field-sizing:content}.report-card{break-inside:avoid}.norm-card h2,.notice h3{font-size:14pt}}
+@media(max-width:720px){.nav-footer{display:grid;grid-template-columns:1fr auto;gap:8px 12px;margin-top:12px;padding:12px 3px 0;border-top:1px solid #ffffff25}.nav-footer #progress-label{grid-column:1/2;align-self:center}.nav-footer #progress{grid-column:1/2}.nav-footer #save-status{grid-column:1/-1;font-size:.68rem;margin:0}.nav-footer #reset-button{grid-column:2;grid-row:1/3;min-height:44px;font-size:.7rem;padding:8px}.board-title{grid-column:1/-1}}
+.sidebar .muted{color:#bdd0c0}.sidebar .btn.ghost{color:#e8efdc}.sidebar .btn.ghost:hover{background:#ffffff12;color:#fff}
+/* Edición ampliada: recorrido, balance e informe. */
+.step-nav{gap:3px}.step-link{min-height:54px;padding:10px 11px;gap:9px}.step-copy>span{font-size:.65rem;margin-top:3px}.nav-symbol{flex:0 0 25px;font-size:1.12rem;text-align:center}.nav-footer{padding-top:18px}.brand{margin-bottom:8px}.nav-intro{margin-bottom:16px}.workspace{grid-template-columns:minmax(0,1fr) 235px!important;max-width:1320px}.topbar{position:relative}.hero>.hero-grid{grid-template-columns:minmax(0,1fr) auto}.hero .scene-icon{align-self:start}.section-title{font-size:clamp(2rem,3.1vw,3.05rem)}.sidebar .step-link:disabled{opacity:.42}.sidebar .step-link:disabled:hover{background:none}.side-panel .btn{width:100%;margin-top:9px}.scenario-chips{display:grid;gap:9px;margin:15px 0}.scenario-chip{display:block;padding:11px 14px;background:#f3f6ed;border-left:3px solid #c9d98d;font-size:.83rem;border-radius:0 9px 9px 0}.prediction-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.scope-tag{font-size:.71rem;margin:2px 0 18px;white-space:normal;line-height:1.5}.resource>p{padding:15px 3px 0}.decision-status{margin:0!important}.decision{scroll-margin-top:20px}.option-content{flex:1}.option-card:has(input:disabled){cursor:default}.result-table{min-width:610px}.data-table caption{padding:10px 0;color:var(--muted);text-align:left;font-size:.75rem;line-height:1.5}.result-table th{font-weight:650}.scope-note{display:block;font-size:.72rem;font-weight:400;color:var(--muted);margin-top:7px;max-width:230px}.range{display:block;font-size:.73rem;color:var(--muted);white-space:nowrap;margin-top:3px}.saving{color:#266942;font-weight:650}.increase{color:#9b4e2d;font-weight:650}.metric>span,.metric>strong{display:block}.metric>span:first-child{font-size:.82rem;margin-bottom:10px}.metric>span:last-child{font-size:.72rem;line-height:1.4;margin-top:7px}.metric-value{font-size:1.7rem;line-height:1.2}.comparison-delta{font-size:1.15rem;font-weight:650;color:var(--forest);margin:20px 0 12px}.comparison-card{border-color:#abc28b;background:#f8fbf1}.chart{margin:25px 0}.chart-row{display:grid;grid-template-columns:150px minmax(0,1fr) 76px;gap:12px;align-items:center;margin:15px 0}.chart-label{font-size:.78rem;line-height:1.35}.chart-number{font-size:.76rem;text-align:right;font-variant-numeric:tabular-nums}.chart-tracks{display:grid;gap:4px;background:#f3f5ee;padding:5px 0;border-radius:5px}.bar{height:8px;border-radius:0 4px 4px 0;min-width:1px}.reference-bar{background:#a7b5a2}.chosen-bar{background:#527a38}.legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin:0 5px 0 12px}.reference-dot{background:#a7b5a2}.chosen-dot{background:#527a38}.checks-list{display:grid;gap:13px}.check-item{display:flex;gap:12px;background:#f1f7ec;border-radius:12px;padding:16px}.check-item h3{margin:0 0 8px;font-size:.96rem}.check-item p{margin:0;font-size:.86rem}.check-review{background:#fff5df}.check-icon{display:grid;place-items:center;width:24px;height:24px;flex:0 0 24px;border-radius:50%;background:#d9e8cb;font-weight:800}.check-review .check-icon{background:#f2d4a3}.impact-ranking{padding-left:22px}.impact-ranking li{padding:7px 0}.impact-ranking li>span{display:block;font-size:.84rem;color:var(--muted);margin-top:4px}.source-entry{padding:15px 0;border-top:1px solid var(--line)}.source-entry h3{font-size:1rem}.source-entry p{font-size:.85rem;line-height:1.6}.print-only{display:none}.toast{pointer-events:none}.top-actions .btn{font-size:.76rem;min-height:42px}.report-cover p:last-child{font-size:.86rem}.field textarea{white-space:pre-wrap}.footer-note{font-size:.72rem}
+@media(max-width:1300px){.workspace{grid-template-columns:minmax(0,1fr)!important}.side-panel{position:static;display:block}.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 16px}.board-title,.board>p{grid-column:1/-1}.board>.btn{width:auto;align-self:start}}@media(max-width:950px){.app-shell{grid-template-columns:220px minmax(0,1fr)}.workspace{padding:27px 24px}.prediction-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.top-actions .tag{display:none}.hero-grid{grid-template-columns:1fr}.chart-row{grid-template-columns:118px minmax(0,1fr) 65px;gap:8px}}
+@media(max-width:720px){.app-shell{display:block}.sidebar{padding:18px 14px 13px}.sidebar .brand{margin-bottom:13px}.step-nav{display:flex;flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:7px;scroll-snap-type:x proximity}.step-link{min-height:58px;flex:0 0 130px;flex-direction:row;justify-content:flex-start;text-align:left;padding:9px;scroll-snap-align:start}.step-copy strong{font-size:.74rem}.step-copy>span{display:none}.nav-symbol{font-size:1rem;flex-basis:20px}.nav-footer{display:grid;grid-template-columns:1fr auto;padding:8px 3px 0;margin:7px 0 0}.nav-footer #progress-label{font-size:.7rem}.nav-footer .progress-track{grid-column:1;grid-row:2}.nav-footer #save-status{grid-column:1/-1;font-size:.67rem;margin:0}.nav-footer .btn{grid-column:2;grid-row:1/3;font-size:.72rem}.topbar{padding:10px 16px;gap:8px;min-height:65px;align-items:flex-start}.top-actions{gap:2px}.top-actions .btn{font-size:.67rem;padding:7px;min-height:40px}.crumb{font-size:.74rem;max-width:100px;line-height:1.4}.workspace{padding:25px 16px!important}.section-title{font-size:2.12rem}.hero>.hero-grid{grid-template-columns:1fr}.scene-icon{display:none!important}.lead{font-size:.95rem}.card{padding:20px 16px}.prediction-grid,.form-grid{grid-template-columns:1fr}.feedback-grid{grid-template-columns:1fr}.metric-value{font-size:1.6rem}.comparison-delta{font-size:1.02rem}.chart-row{grid-template-columns:94px minmax(0,1fr) 57px;gap:6px}.chart-label,.chart-number{font-size:.68rem}.board{display:block}.board>.btn{width:100%}.range{font-size:.7rem}.scenario-chip{font-size:.78rem;padding:9px 11px}.footer-note{padding:17px}.option-title{font-size:.88rem}.option-description{font-size:.8rem}}
+@media print{@page{size:A4;margin:15mm}.app-shell,.modal,.toast,.skip-link{display:none!important}#print-report{display:block!important;color:#222;background:#fff;font:10pt/1.45 "Segoe UI",sans-serif}#print-report h1{font-size:25pt;margin:0 0 12pt}#print-report h2{font-size:15pt;margin:18pt 0 9pt;break-after:avoid}#print-report h3{font-size:11pt;margin:12pt 0 5pt;break-after:avoid}#print-report p{margin:6pt 0}#print-report .data-table{font-size:8.5pt;min-width:0;width:100%;border-collapse:collapse}#print-report .data-table td,#print-report .data-table th{padding:7pt 5pt;vertical-align:top;border-bottom:1px solid #ccc}#print-report .scope-note{font-size:8pt;max-width:none}#print-report .range{font-size:7.5pt;white-space:normal}#print-report .table-wrap{overflow:visible;border:0}#print-report thead{display:table-header-group}#print-report tr,#print-report .print-choice,#print-report .check-item{break-inside:avoid}#print-report .feedback-grid{display:grid;grid-template-columns:1fr 1fr}#print-report .metric{padding:9pt;border:1px solid #ccc}#print-report .metric-value{font-size:16pt}#print-report .card,#print-report .comparison-card{box-shadow:none;padding:0;border:0;background:#fff;margin:12pt 0}#print-report .check-item{padding:10pt;background:#f5f5f5!important}#print-report .eyebrow{font-size:9pt}#print-report .btn{display:none!important}#print-report section{break-inside:auto}#print-report a,#print-report p{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Recorrido">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">↗</span><div><div class="brand-name">SOS / LAB</div><div class="course-label">Una jornada informática</div></div></div>
+    <p class="nav-intro">Decide hoy.<br>Descubre qué pesa más.</p>
+    <nav class="step-nav" id="navigation" aria-label="Escenas de la jornada"></nav>
+    <div class="nav-footer"><div id="progress-label"></div><div class="progress-track" id="progress" role="progressbar" aria-label="Decisiones registradas" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0"><div class="progress-fill" id="progress-fill"></div></div><p class="small muted" id="save-status" role="status"></p><button type="button" class="btn ghost" data-action="save-copy">Guardar copia</button></div>
+  </aside>
+  <main id="main" class="main-shell" tabindex="-1">
+    <header class="topbar"><div class="crumb" id="current-scene">Tu misión</div><div class="top-actions"><span class="tag" id="attempt-status">Primera simulación</span><button type="button" class="btn ghost" data-action="sources">Fuentes y supuestos</button><button type="button" class="btn ghost" data-action="restart-dialog">Nueva simulación</button></div></header>
+    <div class="workspace"><div class="content" id="scene"></div><aside class="side-panel" id="side-panel" aria-label="Estado de la simulación"></aside></div>
+    <footer class="footer-note">Sostenibilidad aplicada · Escenario educativo, estimaciones orientativas.</footer>
+  </main>
+</div>
+<dialog class="modal" id="modal" aria-labelledby="modal-title"></dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+<section id="print-report" class="print-only" aria-label="Informe imprimible"></section>
+<input type="file" id="import-file" accept="application/json,.json" hidden aria-label="Recuperar una copia de la simulación">
+<noscript>Activa JavaScript en tu navegador para realizar la simulación.</noscript>
+<script>/* Modelo didáctico, no inventario ni calculadora de huella certificada. */
+(function () {
+  'use strict';
+  const scenario = Object.freeze({
+    id: 'oficina-es-v1', employees: 20, workdays: 220, hours: 8,
+    commuteKm: 16, officeAreaM2: 120, heatingDays: 120,
+    appUsers: 1000, actionsPerUser: 20, hardwareYears: 4,
+    electricityKgPerKWh: 0.107, gasKgCO2PerKWhPCI: 0.20196,
+    heatingThermalKWh: 7200, boilerEfficiency: 0.90,
+    appGridKgPerKWh: 0.107, dataCenterPUE: 1.3,
+    networkKWhPerGB: 0.001, aiWhPerRequest: 0.24
+  });
+  const scenarioSummary = [
+    'Oficina ficticia española: veinte personas, ocho horas de jornada y 220 días laborables al año.',
+    'El desplazamiento, la pausa y la tarea de programación corresponden a una persona y un puesto. La sala compartida se cuenta una sola vez; no se multiplica por veinte.',
+    'La aplicación completa atiende a 1.000 usuarios por día laborable, con veinte operaciones útiles por usuario. El servidor de pruebas es distinto de la infraestructura de producción.',
+    'El portátil de la decisión de compra es un aparato auxiliar distinto del puesto de pausa y de los dos aparatos retirados. La comparación de compra incluye solo fabricación, transporte y reparación, anualizados en cuatro años.',
+    'Electricidad: referencia fija de 0,107 kg CO₂e/kWh, basada en el etiquetado de generación nacional de la CNMC para 2025. No es un dato en tiempo real ni el factor de una comercializadora concreta.',
+    'Distancias, potencias, horarios, demanda de calefacción, tiempos de programación y carga de la aplicación son supuestos del caso; no se han medido en un aula o una empresa real.',
+    'Los intervalos son rangos de sensibilidad del modelo, no intervalos estadísticos de confianza. Se mantiene la misma versión del modelo entre los dos intentos.'
+  ];
+  const sources = [
+    {id:'electricity',label:'CNMC: etiquetado de electricidad 2025',url:'https://www.cnmc.es/en/node/420337',note:'Referencia fija de generación nacional de 107 g CO₂e/kWh; expediente GDO/DE/001/26. Se contrasta con el etiquetado publicado por Barcelona Energia, que identifica esa media nacional. No se aplica un factor cero por garantías de origen.'},
+    {id:'electricity-label',label:'Etiquetado 2025: media nacional',url:'https://www.barcelonaenergia.cat/documents/20121/1772997/Etiquetado%2BElectricidad%2B2025.pdf',note:'Documento de la comercializadora pública que muestra 107 g CO₂e/kWh como media nacional de generación. El modelo adopta ese valor como referencia fija española, no el factor comercial de Barcelona Energia.'},
+    {id:'fuel',label:'MITECO: factores de combustibles, edición 2026',url:'https://www.miteco.gob.es/content/dam/miteco/es/calidad-y-evaluacion-ambiental/temas/sistema-espanol-de-inventario-sei-/inventario-gases-efecto-invernadero/AV4-FE-CO2-PCI-combustibles-2026.pdf',note:'Gas natural: 56,10 kg CO₂/GJ PCI, equivalentes a 0,20196 kg CO₂/kWh PCI. Gasóleo: 74,10 kg CO₂/GJ y 43 GJ/t; con densidad del escenario 0,832 kg/L resulta 2,6502 kg CO₂/L. Se modela combustión, sin extracción/refino ni fabricación de vehículos.'},
+    {id:'idae',label:'IDAE: ahorro energético e iluminación',url:'https://www.idae.es/ahorra-energia/recomendaciones-para-el-ahorro-energetico-en-hogares',note:'Aprovechamiento de luz natural y adecuación de la climatización. El incremento aproximado del 7 % por grado orienta el caso, pero no es una ley para todos los edificios: se ensaya 10–20 % para dos grados, con 14 % central.'},
+    {id:'sci',label:'Green Software Foundation: Software Carbon Intensity',url:'https://sci.greensoftware.foundation/',note:'Comparar el mismo servicio, declarar componentes y supuestos, y combinar energía con intensidad de carbono. La simulación no es una evaluación completa conforme a SCI.'},
+    {id:'network',label:'Impact Framework: ejemplo de energía de red',url:'https://if.greensoftware.foundation/pipelines/sci/',note:'El tutorial utiliza 0,001 kWh/GB. Aquí es una aproximación contable, con sensibilidad 0,0005–0,01 kWh/GB: reducir bytes no equivale a reducir proporcionalmente el consumo real de la red a corto plazo.'},
+    {id:'ai',label:'Google: medición de inferencia de IA, 2025',url:'https://arxiv.org/abs/2508.15734',note:'Mediana de 0,24 Wh por petición de texto en Gemini Apps, mayo de 2025, incluyendo infraestructura de servicio. No es un factor universal de programación. El caso ensaya 0,1–5 Wh por petición, además del puesto; no incluye entrenamiento ni fabricación del sistema de IA.'},
+    {id:'hardware',label:'Dell Pro 13 Premium PA13250: ciclo de vida',url:'https://www.delltechnologies.com/asset/en-us/products/laptops-and-2-in-1s/technical-support/dell-pro-13-premium-pa13250-pcf-report.pdf',note:'Informe de enero de 2025: 101 kg CO₂e de ciclo de vida, con aproximadamente 73 kg de fabricación y 4 kg de transporte. Se usan solo esos 77 kg para la compra; se excluye aquí el uso y el fin de vida. Reparación: supuesto del caso de 10 kg, sensibilidad 5–20 kg. La sensibilidad de compra ±30 % es didáctica, no un intervalo publicado por Dell.'},
+    {id:'raee',label:'BOE: RD 110/2015, artículo 13',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2015-1762#a13',note:'Segundo uso cuando es posible y entrega como RAEE cuando el aparato resulta inutilizable. No se inventa una reducción de carbono para estas dos decisiones.'},
+    {id:'case',label:'Supuestos explícitos de la oficina ficticia',url:'',note:'Sala de 120 m²; 360 W de iluminación, con 180 W evitables durante cuatro horas; 7.200 kWh térmicos/año a consigna moderada y caldera de gas al 90 %. Puesto: 60 W activo, 3 W suspendido y pantalla de 20 W. Servidor de pruebas: 60 W. Software: CPU de 40 W durante 0,4 o 0,1 s por petición, más parte fija de infraestructura de 10 W y PUE 1,3. Procesamiento del navegador: 20 W durante 0,01 s por MB, aproximadamente 0,0556 Wh/GB. Tiempos y potencias construidos para el caso, no mediciones presentadas como reales.'}
+  ];
+  const option = (id,label,description) => ({id,label,description});
+  const decisions = {
+    commute: {
+      page:'travel', title:'Cómo llegar al trabajo',
+      context:'Cada día recorres ocho kilómetros de ida y ocho de vuelta. Las cuatro alternativas están disponibles y te permiten llegar a tiempo en las condiciones del caso.',
+      help:'La bici tiene una ruta practicable. El coche diésel consume 6 L/100 km. En el coche compartido viajan tres personas sin desvío. El autobús del caso consume 30 L/100 km y lleva veinte pasajeros. Su ocupación introduce incertidumbre.',
+      scope:'Una persona, dieciséis kilómetros por día laborable.',
+      options:[option('bike','Bicicleta','Ruta practicable y tiempo suficiente.'),option('bus','Autobús','Servicio compatible con el horario; compartes el vehículo con otros pasajeros.'),option('carpool','Coche compartido','Tres personas, mismo destino y sin desvío.'),option('solo','Coche individual','El trayecto completo atiende a una persona.')]
+    },
+    lighting: {
+      page:'room',title:'Iluminación de la oficina',
+      context:'Durante cuatro horas, la luz natural ilumina la mitad de los puestos cuando se ajustan las persianas. En las demás zonas y horas se utiliza iluminación artificial. El caso proporciona iluminación suficiente en ambas configuraciones.',
+      help:'Todas las luminarias suman 360 W. La configuración por zonas mantiene 180 W durante las cuatro horas con luz natural y 360 W durante el resto de la jornada.',
+      scope:'Sala compartida de veinte puestos.',
+      options:[option('all','Persianas bajadas e iluminación artificial','Todas las luminarias permanecen encendidas durante la jornada.'),option('daylight','Persianas ajustadas e iluminación por zonas','La mitad de las luminarias se mantiene encendida durante las cuatro horas con luz natural; después se encienden todas.')]
+    },
+    heating: {
+      page:'room',title:'Temperatura y vestimenta',
+      context:'Es invierno. La sala se calienta con una caldera de gas. Se comparan dos consignas de temperatura y dos formas de vestir durante la jornada.',
+      help:'La demanda anual del caso a 20 °C es de 7.200 kWh térmicos. Para 22 °C el modelo utiliza un incremento central del 14 %, con sensibilidad de 10–20 %. La caldera tiene un rendimiento central del 90 %. Son datos del escenario; no describen cualquier edificio. La ventilación es la misma en todas las opciones.',
+      scope:'Calefacción de la oficina.',
+      options:[option('high','Consigna de 22 °C y ropa ligera','El sistema mantiene la consigna durante la ocupación.'),option('moderate','Consigna de 20 °C y una prenda adicional','Se cambia la consigna del sistema y se añade una prenda.'),option('coat','Consigna de 22 °C y una prenda adicional','Se añade una prenda y se conserva la consigna del sistema.')]
+    },
+    pause: {
+      page:'pause',title:'Gestionar la pausa del puesto',
+      context:'Durante una pausa de una hora, una copia de seguridad necesita quince minutos de ordenador activo. Apagar solo la pantalla no la interrumpe. La copia debe estar terminada al volver.',
+      help:'Valores del caso: unidad central activa 60 W, suspendida 3 W y pantalla encendida 20 W. La pantalla apagada se aproxima a 0 W. Si suspendes inmediatamente, habrá que recuperar después esos quince minutos de tarea: esa energía también se cuenta, aunque incumplas el plazo del servicio.',
+      scope:'Puesto de trabajo y pausa de una hora.',
+      options:[option('suspend','Suspender inmediatamente','La copia se detiene y queda pendiente al volver.'),option('on','Dejar ordenador y pantalla encendidos','La copia puede terminar durante la pausa.'),option('screen','Apagar solo la pantalla','El ordenador permanece activo durante toda la pausa.'),option('after','Apagar pantalla y suspender tras comprobar la copia','El ordenador trabaja quince minutos y después se suspende cuarenta y cinco.')]
+    },
+    payload: {
+      page:'data',title:'Datos de la respuesta de la API',
+      context:'El catálogo contiene muchos productos, pero en esta operación el usuario necesita veinte registros y cinco campos. Ambas alternativas muestran correctamente esos veinte productos.',
+      help:'El caso asigna 2 MB a la respuesta completa y 50 kB a la respuesta ajustada, incluyendo datos y sobrecarga simplificada. La cantidad transferida afecta a la red y al procesamiento del navegador, pero no se convierte directamente en un porcentaje idéntico de CO₂.',
+      scope:'La aplicación completa, con veinte operaciones útiles por usuario y día de actividad.',
+      options:[option('all','Respuesta con el catálogo completo','El navegador recibe todos los registros y campos y filtra después.'),option('needed','Respuesta filtrada y paginada','La API devuelve veinte registros y cinco campos para esta operación.')]
+    },
+    refresh: {
+      page:'data',title:'Decidir cuándo volver a solicitar datos',
+      context:'La aplicación puede consultar periódicamente el catálogo o hacerlo al realizar una operación, utilizando mientras tanto una copia local. En el escenario, ambas configuraciones respetan la vigencia requerida de los datos.',
+      help:'Las consultas periódicas generan diez peticiones por cada operación del usuario. La otra configuración realiza una petición asociada a la operación y reutiliza datos recibidos. Las frecuencias son supuestos didácticos del caso.',
+      scope:'Frecuencia de las solicitudes de la aplicación.',
+      options:[option('frequent','Solicitudes periódicas','El cliente consulta al servidor a intervalos fijos mientras la pantalla está abierta.'),option('cache','Solicitudes asociadas a las operaciones','El cliente consulta al realizar una operación y utiliza una copia local entre consultas.')]
+    },
+    processing: {
+      page:'backend',title:'Localizar los registros en el backend',
+      context:'El servidor debe localizar registros que cumplen un criterio de búsqueda. Las dos alternativas obtienen el mismo resultado. La cantidad de datos que se envía al cliente se mantiene según tu elección anterior sobre la API.',
+      help:'El caso asigna una fracción de procesador de 40 W durante 0,4 segundos a la búsqueda secuencial y durante 0,1 segundos a la búsqueda mediante índice. Son tiempos construidos para esta operación, no un benchmark ni una afirmación universal sobre cualquier consulta. La infraestructura añade PUE y una parte fija de funcionamiento.',
+      scope:'Procesamiento de las solicitudes en el servidor.',
+      options:[option('naive','Búsqueda secuencial','El servidor recorre los registros y comprueba uno a uno si cumplen el criterio.'),option('optimized','Búsqueda mediante índice','El servidor consulta una estructura de índice para localizar los registros que cumplen el criterio.')]
+    },
+    devserver: {
+      page:'backend',title:'Organizar el servidor de pruebas',
+      context:'Las pruebas se ejecutan en un equipo físico dedicado, independiente del servicio de los clientes. La jornada de pruebas dura ocho horas. Fuera de ese horario no hay pruebas ni tareas programadas en ejecución.',
+      help:'El equipo consume 60 W cuando está encendido. La opción con horario implica encender el equipo al comenzar la jornada y apagarlo al terminar, manualmente o mediante una programación compatible con el equipo. Se incluye la energía de arranque. No equivale a cerrar un servicio o detener una máquina virtual en un ordenador que sigue encendido. Los datos permanecen almacenados al apagarlo.',
+      scope:'Equipo físico dedicado a pruebas.',
+      options:[option('always','Funcionamiento continuo','El equipo permanece encendido durante el año completo.'),option('schedule','Funcionamiento durante la jornada de pruebas','Se enciende al inicio y se apaga al final de las ocho horas de cada día laborable.')]
+    },
+    ai: {
+      page:'ai',title:'Resolver una tarea de programación',
+      context:'Hay que implementar una función pequeña y terminar con código correcto y probado. El caso describe tres procedimientos con su tiempo de trabajo y número de consultas de IA.',
+      help:'Se cuenta el puesto de trabajo durante la tarea y el servicio de inferencia. Se usa 0,24 Wh por petición como referencia publicada, con una sensibilidad amplia de 0,1–5 Wh; no es una medida de código ni un factor universal de IA. Los tiempos y el número de peticiones son supuestos del caso.',
+      scope:'Una tarea correcta por día laborable. Se separan el tiempo de trabajo y el uso del servicio de IA.',
+      options:[option('manual','Programación con documentación','Sesenta minutos de trabajo; incluye la comprobación del resultado.'),option('focused','Programación con tres consultas de IA','Treinta minutos de trabajo y tres consultas; incluye revisión y pruebas.'),option('repeated','Programación con treinta consultas de IA','Cuarenta y cinco minutos de trabajo y treinta consultas; incluye revisión y pruebas.')]
+    },
+    hardware: {
+      page:'equipment',title:'Renovación de un portátil',
+      context:'Un portátil auxiliar, distinto del puesto de pausa, sigue siendo seguro y adecuado. Una intervención de mantenimiento permite utilizarlo durante los próximos cuatro años, igual que el horizonte previsto para uno nuevo.',
+      help:'Referencia de compra: aproximadamente 73 kg CO₂e de fabricación y 4 kg de transporte, tomados del informe del Dell Pro 13 Premium de 2025. La intervención se representa con 10 kg, sensibilidad 5–20 kg. Esta fila solo compara compra y mantenimiento; el uso eléctrico y el final de vida quedan fuera de ambas alternativas.',
+      scope:'Un portátil auxiliar y un periodo de cuatro años.',
+      options:[option('new','Comprar un portátil nuevo','Se incorpora un aparato nuevo para el periodo considerado.'),option('keep','Mantener el portátil actual','Se realiza la intervención descrita y se utiliza el aparato durante ese periodo.')]
+    },
+    reuse: {
+      page:'equipment',title:'Dar salida al aparato funcional',
+      context:'Otro aparato del inventario funciona, es seguro y tiene software mantenido. Una asociación confirma que le sirve; la cesión está autorizada y el borrado de datos ya está comprobado.',
+      help:'El artículo 13.1 del RD 110/2015 contempla destinar los aparatos usados a un segundo uso cuando sea posible. Consulta la ficha y relaciona el estado del aparato con la actuación.',
+      scope:'Un aparato del inventario distinto del portátil anterior.',
+      options:[option('reuse','Ceder el aparato a la asociación','Se prepara y documenta la entrega para su uso en la asociación.'),option('raee','Entregar el aparato como RAEE','Se tramita su retirada a través del canal de recogida.'),option('store','Almacenar el aparato','Se guarda en el almacén sin asignarle una fecha de salida.')]
+    },
+    waste: {
+      page:'equipment',title:'Gestionar el aparato inutilizable',
+      context:'Un segundo aparato presenta daños estructurales y carece de componentes esenciales. Su diagnóstico descarta el segundo uso directo. La empresa dispone de un canal de RAEE con gestor autorizado y justificante.',
+      help:'El artículo 13.2 del RD 110/2015 indica la entrega como RAEE cuando no procede el segundo uso. Esto no excluye una recuperación posterior de componentes o materiales en el circuito de gestión adecuado.',
+      scope:'Otro aparato del inventario.',
+      options:[option('gestor','Entregarlo al gestor de RAEE','Se tramita la entrega y se conserva el justificante.'),option('donate','Donar el aparato para su uso','Se entrega a otra entidad para que lo utilice.'),option('mixed','Depositarlo con los residuos mezclados','Se deposita en el contenedor general.')]
+    }
+  };
+  const referenceAnswers = Object.freeze({commute:'solo',lighting:'all',heating:'high',pause:'on',payload:'all',refresh:'frequent',processing:'naive',devserver:'always',ai:'manual',hardware:'new',reuse:'raee',waste:'mixed'});
+  const interval = (low,central,high) => ({low,central,high});
+  const fixed = n => interval(n,n,n);
+  const scale = (v,k) => interval(v.low*k,v.central*k,v.high*k);
+  const plus = (...values) => values.reduce((a,b)=>interval(a.low+b.low,a.central+b.central,a.high+b.high),fixed(0));
+  const electricity = kWh => scale(typeof kWh==='number'?fixed(kWh):kWh,scenario.electricityKgPerKWh);
+  function selection(answers,key) {
+    let value=answers && answers[key];
+    if(value && typeof value==='object')value=value.choice;
+    if(!value)return referenceAnswers[key];
+    if(!decisions[key].options.some(o=>o.id===value))throw new Error('Alternativa desconocida en '+key);
+    return value;
+  }
+  function calculate(answers,overrides) {
+    overrides=overrides||{};
+    const rawDays=overrides.workdays===undefined?scenario.workdays:Number(overrides.workdays);
+    const rawUsers=overrides.appUsers===undefined?scenario.appUsers:Number(overrides.appUsers);
+    if(!Number.isFinite(rawDays)||rawDays<1||rawDays>365)throw new Error('Días de actividad fuera de rango.');
+    if(!Number.isFinite(rawUsers)||rawUsers<1||rawUsers>1000000)throw new Error('Usuarios fuera de rango.');
+    const days=rawDays,users=rawUsers,ratio=days/scenario.workdays;
+    const a={};Object.keys(decisions).forEach(k=>a[k]=selection(answers,k));
+    const rows=[],checks=[];
+    const row=(id,label,scope,reference,chosen,explanation,sourceIds)=>rows.push({id,label,scope,reference,chosen,explanation,sourceIds,unit:'kg CO₂e/año'});
+
+    // Transporte: emisiones de combustión asignadas al pasajero; no ciclo de vida.
+    const dieselKgPerL=74.1*43*0.832/1000;
+    const km=16*days;
+    const car=interval(km*0.05*dieselKgPerL,km*0.06*dieselKgPerL,km*0.07*dieselKgPerL);
+    let travel=car;
+    if(a.commute==='bike')travel=fixed(0);
+    if(a.commute==='carpool')travel=scale(car,1/3);
+    if(a.commute==='bus')travel=interval(km*0.25*dieselKgPerL/30,km*0.30*dieselKgPerL/20,km*0.35*dieselKgPerL/10);
+    row('commute','Desplazamiento','Una persona; 16 km por día laborable.',car,travel,'Se estima la combustión del combustible, no la fabricación de los vehículos, las infraestructuras ni alimentación. La bicicleta tiene cero emisiones de combustión en este límite, no huella de ciclo de vida cero. Compartir reparte el mismo viaje entre tres: no prueba que se hayan evitado exactamente otros dos viajes. El intervalo del bus cambia consumo y ocupación.',['fuel','case']);
+
+    const lightReference=0.360*8*days;
+    const lightChosen=a.lighting==='daylight'?lightReference-0.180*4*days:lightReference;
+    row('lighting','Iluminación','Sala completa; ocho horas por día de actividad.',electricity(lightReference),electricity(lightChosen),'Se evitan 180 W durante cuatro horas cuando se aprovecha la luz natural; las restantes luces y horas siguen consumiendo. La sala se cuenta una vez. Potencias y horas son datos del caso.',['electricity','electricity-label','idae','case']);
+
+    const thermal=7200*ratio;
+    const moderate=interval(thermal*0.8/0.95*scenario.gasKgCO2PerKWhPCI,thermal/0.90*scenario.gasKgCO2PerKWhPCI,thermal*1.2/0.85*scenario.gasKgCO2PerKWhPCI);
+    const high=interval(moderate.low*1.10,moderate.central*1.14,moderate.high*1.20);
+    row('heating','Calefacción','Sala completa y temporada de ocupación; caldera de gas.',high,a.heating==='moderate'?moderate:high,'La demanda a 20 °C es un supuesto anual de 7.200 kWh térmicos. Subir a 22 °C añade un 14 % central, con sensibilidad 10–20 %. El intervalo también varía demanda ±20 % y rendimiento 85–95 %. No es una ley por grado ni una medida real. Abrigarse sin modificar el sistema mantiene el consumo de la consigna alta. Se cuenta la combustión del gas, sin cadena previa.',['fuel','idae','case']);
+
+    const pauseWh={suspend:23,on:80,screen:60,after:17.25}[a.pause];
+    row('pause','Pausa del puesto','Un puesto y una pausa por día laborable.',electricity(80/1000*days),electricity(pauseWh/1000*days),'Referencia: (60 + 20) W × 1 h. Pantalla apagada: 60 Wh. Esperar a la copia y suspender: 60 W × 0,25 h + 3 W × 0,75 h = 17,25 Wh. Suspender al inicio consume 3 Wh durante la pausa y se añaden 20 Wh para recuperar quince minutos de tarea después: total 23 Wh. Esta última opción retrasa el servicio y no cumple el plazo.',['electricity','case']);
+    checks.push({id:'pause',label:'Continuidad de la copia',status:a.pause==='suspend'?'review':'ok',message:a.pause==='suspend'?'La copia no está terminada al volver. Se ha contado su recuperación posterior, pero se incumple el plazo del caso.':'La copia puede terminar durante la pausa y debe comprobarse antes de suspender.'});
+
+    // Una sola fila conjunta: tamaño de respuesta × peticiones × proceso interno.
+    function appEnergy(config) {
+      const actions=users*20*days;
+      const requests=actions*(config.refresh==='frequent'?10:1);
+      const responseGB=config.payload==='all'?0.002:0.00005;
+      const gb=requests*responseGB;
+      const seconds=config.processing==='naive'?0.4:0.1;
+      const cpuKWh=requests*40*seconds/3600000;
+      const fixedIT=10*24*365/1000; // Parte fija asignada al servicio, no a las peticiones.
+      const server=interval((fixedIT*0.5+cpuKWh*0.5)*1.15,(fixedIT+cpuKWh)*1.3,(fixedIT*2+cpuKWh*2)*1.6);
+      const network=interval(gb*0.0005,gb*0.001,gb*0.01);
+      const browser=interval(gb*0.0278/1000,gb*0.0556/1000,gb*0.1112/1000);
+      return {kWh:plus(server,network,browser),actions,requests,gb};
+    }
+    const appRef=appEnergy(referenceAnswers),appChosen=appEnergy(a);
+    row('app','Aplicación en producción','Servicio completo; '+users.toLocaleString('es-ES')+' usuarios y veinte operaciones útiles por usuario y día.',electricity(appRef.kWh),electricity(appChosen.kWh),'Se combinan tamaño de respuesta, frecuencia y procesamiento en una única configuración: no se suman ahorros aislados. Incluye una parte fija de infraestructura de 10 W, CPU de 40 W durante 0,4 o 0,1 s, PUE central 1,3, red a 0,001 kWh/GB y procesamiento del navegador. Son parámetros de un modelo didáctico, no mediciones. La sensibilidad ensaya red 0,0005–0,01 kWh/GB y factores de cómputo. La red se asigna contablemente por GB; no representa ahorro marginal garantizado al reducir tráfico. Se omite fabricación de esa infraestructura.',['sci','network','electricity','case']);
+
+    const testRefKWh=0.060*24*365;
+    const testChosenKWh=a.devserver==='schedule'?0.060*8*days+0.010*days:testRefKWh;
+    row('devserver','Servidor de pruebas','Servidor independiente de producción; año completo.',electricity(testRefKWh),electricity(testChosenKWh),'Servidor del caso a 60 W. Siempre activo: 8.760 horas/año. Con horario: ocho horas por día laborable, más 0,010 kWh de arranque por día. No hay servicios ni tareas necesarias fuera de ese horario. Se omite fabricación del servidor en ambas alternativas.',['electricity','case']);
+
+    function programming(choice) {
+      const minutes={manual:60,focused:30,repeated:45}[choice];
+      const queries={manual:0,focused:3,repeated:30}[choice];
+      const local=interval(0.064*minutes/60*days*0.8,0.080*minutes/60*days,0.096*minutes/60*days*1.2);
+      const inference=interval(queries*0.1/1000*days,queries*0.24/1000*days,queries*5/1000*days);
+      return electricity(plus(local,inference));
+    }
+    row('ai','Tarea de programación y ayuda de IA','Una tarea correcta por día laborable; periodo distinto de la pausa.',programming('manual'),programming(a.ai),'El tiempo de trabajo (60, 30 o 45 minutos) y las peticiones (0, 3 o 30) son supuestos de tres procedimientos que alcanzan el mismo resultado. Se cuenta el puesto a 80 W y la inferencia; el caso aplica el mismo factor eléctrico español a ambos, sin afirmar que un proveedor concreto opere en España. 0,24 Wh es una mediana de texto publicada, no una medida de programación. Se ensayan 0,1–5 Wh por petición y variación de tiempo/potencia. Los rangos pueden solaparse: no hay ganador universal. Se excluyen entrenamiento, fabricación y otras búsquedas/documentación fuera del procedimiento definido.',['ai','electricity','case']);
+
+    const buy=interval(77*0.7/4,77/4,77*1.3/4);
+    const repair=interval(5/4,10/4,20/4);
+    row('hardware','Compra y mantenimiento de un portátil','Un portátil auxiliar; fabricación y mantenimiento repartidos entre cuatro años.',buy,a.hardware==='keep'?repair:buy,'Compra: 73 kg CO₂e de fabricación y 4 kg de transporte de un modelo Dell de referencia, divididos entre cuatro años. Sensibilidad didáctica ±30 %, no intervalo del fabricante. Mantenimiento: 10 kg totales del caso (5–20 kg), también divididos entre cuatro. Se supone que el aparato actual puede prestar el mismo servicio durante ese horizonte. No se vuelve a contar aquí electricidad; tampoco se incluyen créditos de reciclaje ni fin de vida. Las emisiones históricas de fabricación del aparato actual no se vuelven a producir por conservarlo.',['hardware','sci','case']);
+
+    checks.push({id:'reuse',label:'Aparato funcional',status:a.reuse==='reuse'?'ok':'review',message:a.reuse==='reuse'?'El segundo uso viable y confirmado responde al artículo 13.1. Su reducción climática no está estimada: no se añade un ahorro inventado al total.':a.reuse==='raee'?'Existe un segundo uso viable: revisa la retirada directa como residuo frente al artículo 13.1. Huella del destino no estimada.':'Almacenar indefinidamente no concreta el segundo uso confirmado. Revisa la actuación; huella del destino no estimada.'});
+    checks.push({id:'waste',label:'Aparato inutilizable',status:a.waste==='gestor'?'ok':'review',message:a.waste==='gestor'?'La entrega por el canal de RAEE responde al artículo 13.2. Se conserva el justificante; la reducción climática no está estimada.':a.waste==='donate'?'Donar como utilizable no resuelve los daños. El caso requiere entrega como RAEE según el artículo 13.2.':'El contenedor de residuos mezclados no es el canal de RAEE previsto por el caso. Revisa la actuación conforme al artículo 13.2.'});
+    for(const r of rows)for(const bucket of [r.reference,r.chosen])if(![bucket.low,bucket.central,bucket.high].every(Number.isFinite)||bucket.low<0||bucket.low>bucket.central||bucket.central>bucket.high)throw new Error('Resultado de modelo inválido: '+r.id);
+    return {
+      rows,checks,
+      notes:[
+        'Los resultados son estimaciones de partes seleccionadas del caso, no la huella completa de una persona ni de una empresa. Todas las filas numéricas se expresan por año para comparar órdenes de magnitud; cada una conserva su alcance.',
+        'El conjunto incluye una persona viajando y un puesto, una sala compartida, una aplicación completa, un servidor de pruebas y una compra anualizada. No se multiplica todo por veinte ni se presenta como un inventario corporativo completo.',
+        'Electricidad: factor español fijo de 2025. Combustibles: CO₂ de combustión, sin extracción/refino, otros GEI o fabricación de vehículos. Hardware: solo compra y mantenimiento. Estos límites impiden interpretar el conjunto como una evaluación de ciclo de vida homogénea.',
+        'Los intervalos muestran sensibilidad a supuestos del escenario, no probabilidades ni márgenes estadísticos. Un orden de prioridad puede cambiar si los intervalos se solapan.',
+        'Los aparatos de segundo uso y RAEE no aportan cero emisiones ni cero ahorro: su efecto climático está sin estimar y se mantiene separado de las cifras.',
+        'La comparación entre intentos conserva condiciones y versión del modelo. Los experimentos de usuarios o días son exploraciones aparte y no reescriben las simulaciones guardadas.'
+      ],
+      scenario:{...scenario,workdays:days,appUsers:users},
+      appActivity:{reference:{actions:appRef.actions,requests:appRef.requests,gb:appRef.gb},chosen:{actions:appChosen.actions,requests:appChosen.requests,gb:appChosen.gb}}
+    };
+  }
+  window.SOSModel={version:'2.0.0',scenario,scenarioSummary,sources,decisions,referenceAnswers,calculate};
+})();
+</script>
+<script>'use strict';
+(() => {
+  const M=window.SOSModel;
+  const KEY='sos-ra5-jornada-v2-neutral';
+  const FORMAT='sos-ra5-comparison-v2-neutral';
+  const $=id=>document.getElementById(id);
+  const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const copy=x=>JSON.parse(JSON.stringify(x));
+  const number=(x,d=1)=>Number(x).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const keys=Object.keys(M.decisions);
+  const pages=[
+    {id:'intro',title:'Tu misión',sub:'Predice antes de decidir',icon:'↗'},
+    {id:'travel',title:'Llegar al trabajo',sub:'Una persona, un trayecto',icon:'↝'},
+    {id:'room',title:'Preparar la sala',sub:'Luz y confort térmico',icon:'☀'},
+    {id:'pause',title:'Hacer una pausa',sub:'Consumo y servicio',icon:'⏻'},
+    {id:'data',title:'Datos y actualizaciones',sub:'Qué viaja y cuándo',icon:'⇄'},
+    {id:'backend',title:'Procesamiento y pruebas',sub:'Trabajo que no se ve',icon:'⌘'},
+    {id:'ai',title:'Programar una función',sub:'Ayuda, tiempo y resultado',icon:'✦'},
+    {id:'equipment',title:'Revisar los equipos',sub:'Vida útil y destino',icon:'↻'},
+    {id:'results',title:'Comparar resultados',sub:'Descubre qué pesa más',icon:'▥'},
+    {id:'explore',title:'Cambiar la escala',sub:'Un experimento aparte',icon:'↔'}
+  ];
+  const pageKeys={travel:['commute'],room:['lighting','heating'],pause:['pause'],data:['payload','refresh'],backend:['processing','devserver'],ai:['ai'],equipment:['hardware','reuse','waste']};
+  const prediction=[['commute','Desplazamiento'],['lighting','Iluminación'],['heating','Calefacción'],['app','Aplicación'],['hardware','Renovación de equipos']];
+  const newAttempt=()=>({id:crypto.randomUUID?.()||'attempt-'+Date.now(),page:'intro',answers:{},reasons:{},prediction:{},finished:false,reflection:{priorities:['','',''],reason:'',robust:''}});
+  const empty=()=>({format:FORMAT,modelVersion:M.version,active:newAttempt(),reference:null,lastCompleted:null});
+  let state=empty(), blocked=false,saveTimer,toastTimer;
+  let experiment={appUsers:M.scenario.appUsers,workdays:M.scenario.workdays};
+  const a=()=>state.active;
+  const count=()=>keys.filter(k=>a().answers[k]).length;
+  const label=(key,value)=>M.decisions[key].options.find(o=>o.id===value)?.label||'Sin responder';
+  const button=(label,action,kind='primary',attr='')=>`<button type="button" class="btn ${kind}" data-action="${action}" ${attr}>${label}</button>`;
+  const hero=(eyebrow,heading,lead,icon='↗')=>`<section class="hero"><div class="eyebrow">${eyebrow}</div><div class="hero-grid"><div><h1 class="section-title" tabindex="-1">${heading}</h1><p class="lead">${lead}</p></div><div class="scene-icon" aria-hidden="true">${icon}</div></div></section>`;
+  function checkAnswers(answers,complete=false){
+    if(!answers||typeof answers!=='object'||Array.isArray(answers))throw Error('Respuestas no válidas.');
+    const clean={};for(const key of keys){const value=answers[key];if(value==null||value===''){if(complete)throw Error('Faltan decisiones en una simulación terminada.');continue;}if(!M.decisions[key].options.some(o=>o.id===value))throw Error('Una alternativa no pertenece a este escenario.');clean[key]=value;}return clean;
+  }
+  function safeTextMap(input,allowed){const out={};for(const k of allowed)if(typeof input?.[k]==='string')out[k]=input[k].slice(0,4000);return out;}
+  function checkRange(x){if(!x||!['low','central','high'].every(k=>Number.isFinite(x[k])&&x[k]>=0)||x.low>x.central||x.central>x.high)throw Error('El archivo contiene un resultado numérico no válido.');return {low:x.low,central:x.central,high:x.high};}
+  function checkResult(result){
+    const expected=['commute','lighting','heating','pause','app','devserver','ai','hardware'];
+    if(!result||!Array.isArray(result.rows)||result.rows.length!==expected.length||!Array.isArray(result.checks)||result.checks.length!==3)throw Error('Resultados incompletos.');
+    const ids=new Set();
+    const rows=result.rows.map(r=>{if(!expected.includes(r.id)||ids.has(r.id))throw Error('Resultados duplicados o desconocidos.');ids.add(r.id);return {id:r.id,label:String(r.label||'').slice(0,500),scope:String(r.scope||'').slice(0,1000),reference:checkRange(r.reference),chosen:checkRange(r.chosen),explanation:String(r.explanation||'').slice(0,6000),sourceIds:Array.isArray(r.sourceIds)?r.sourceIds.filter(x=>typeof x==='string').slice(0,30):[]};});
+    if(new Set(result.checks.map(c=>c.id)).size!==3||!result.checks.every(c=>['pause','reuse','waste'].includes(c.id)))throw Error('Comprobaciones incompletas.');
+    return {rows,checks:result.checks.slice(0,30).map(c=>({id:String(c.id||''),label:String(c.label||'').slice(0,500),status:c.status==='ok'?'ok':'review',message:String(c.message||'').slice(0,6000)})),notes:Array.isArray(result.notes)?result.notes.filter(x=>typeof x==='string').slice(0,40):[]};
+  }
+  function checkSnapshot(s){
+    if(!s)return null;
+    if(typeof s.id!=='string'||typeof s.modelVersion!=='string'||!s.scenario?.id)throw Error('Una simulación guardada no tiene contexto.');
+    return {id:s.id.slice(0,100),completedAt:String(s.completedAt||''),modelVersion:s.modelVersion.slice(0,100),scenario:copy(s.scenario),answers:checkAnswers(s.answers,true),reasons:safeTextMap(s.reasons,keys),prediction:safeTextMap(s.prediction,prediction.map(x=>x[0])),calculation:checkResult(s.calculation),sources:Array.isArray(s.sources)?s.sources.filter(v=>v&&typeof v.id==='string'&&typeof v.url==='string').slice(0,30).map(v=>({id:v.id,label:String(v.label||''),url:/^https:\/\//.test(v.url)?v.url:'',note:String(v.note||'')})):[],reflection:readReflection(s.reflection)};
+  }
+  function readReflection(r){return {priorities:Array.from({length:3},(_,i)=>typeof r?.priorities?.[i]==='string'?r.priorities[i].slice(0,100):''),reason:typeof r?.reason==='string'?r.reason.slice(0,4000):'',robust:typeof r?.robust==='string'?r.robust.slice(0,4000):''};}
+  function validate(input){
+    if(!input||![FORMAT,'sos-ra5-comparison-v2'].includes(input.format)||input.modelVersion!==M.version||!input.active)throw Error('La copia corresponde a otro formato o versión.');
+    const x=empty();x.active={id:typeof input.active.id==='string'?input.active.id.slice(0,100):newAttempt().id,page:pages.some(p=>p.id===input.active.page)?input.active.page:'intro',answers:checkAnswers(input.active.answers),reasons:safeTextMap(input.active.reasons,keys),prediction:safeTextMap(input.active.prediction,prediction.map(x=>x[0])),finished:input.active.finished===true,reflection:readReflection(input.active.reflection)};
+    x.reference=checkSnapshot(input.reference);x.lastCompleted=checkSnapshot(input.lastCompleted);
+    if(x.active.finished&&(!x.lastCompleted||x.lastCompleted.id!==x.active.id))throw Error('La simulación terminada no tiene su informe.');
+    if(x.active.finished&&JSON.stringify(x.active.answers)!==JSON.stringify(x.lastCompleted.answers))throw Error('Las elecciones no coinciden con el informe guardado.');
+    if(['results','explore'].includes(x.active.page)&&!x.active.finished)x.active.page='intro';
+    return x;
+  }
+  try{const raw=localStorage.getItem(KEY);if(raw)state=validate(JSON.parse(raw));}catch(e){blocked=true;}
+  function persist(){
+    if(!blocked)try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){$('save-status').textContent='Este navegador no puede guardar. Conserva una copia antes de cerrar.';return;}
+    $('save-status').textContent=blocked?'La copia anterior no se ha podido leer y se conserva sin sobrescribir. Guarda una copia o inicia una nueva simulación.':'Tu progreso se conserva en este navegador.';
+  }
+  function toast(message){clearTimeout(toastTimer);$('toast').textContent=message;$('toast').hidden=false;toastTimer=setTimeout(()=>$('toast').hidden=true,4500);}
+  function capture(){
+    if(a().finished)return;
+    document.querySelectorAll('[data-answer]:checked').forEach(el=>a().answers[el.dataset.answer]=el.value);
+    document.querySelectorAll('[data-reason]').forEach(el=>a().reasons[el.dataset.reason]=el.value);
+    document.querySelectorAll('[data-predict]').forEach(el=>a().prediction[el.dataset.predict]=el.value);
+  }
+  function render(){
+    const page=pages.find(p=>p.id===a().page)||pages[0];
+    $('current-scene').textContent=page.title;
+    $('attempt-status').textContent=state.reference?'Nueva pasada · comparación preparada':a().finished?'Simulación finalizada':'Primera simulación';
+    $('navigation').innerHTML=pages.map(p=>{
+      const locked=['results','explore'].includes(p.id)&&!a().finished;
+      const done=pageKeys[p.id]?.every(k=>a().answers[k]);
+      return `<button type="button" class="step-link ${a().page===p.id?'active':''} ${done?'done':''}" data-page="${p.id}" ${locked?'disabled':''} ${a().page===p.id?'aria-current="step"':''}><span class="nav-symbol" aria-hidden="true">${p.icon}</span><span class="step-copy"><strong>${p.title}</strong><span>${p.sub}</span></span></button>`;
+    }).join('');
+    $('progress-label').textContent=`${count()} de ${keys.length} decisiones registradas`;$('progress').setAttribute('aria-valuenow',count());$('progress-fill').style.width=`${count()/keys.length*100}%`;
+    $('scene').innerHTML=({intro,travel:scene,room:scene,pause:scene,data:scene,backend:scene,ai:scene,equipment:scene,results,explore}[a().page]||intro)();
+    renderSide();persist();
+  }
+  function go(id){
+    capture();if(!pages.some(p=>p.id===id))return;
+    if(['results','explore'].includes(id)&&!a().finished){toast('Los resultados aparecerán al completar el recorrido.');return;}
+    a().page=id;render();history.replaceState(null,'',`#${id}`);window.scrollTo(0,0);$('scene').querySelector('h1')?.focus({preventScroll:true});
+  }
+  function intro(){
+    return `${hero('SIMULACIÓN · OFICINA FICTICIA ESPAÑOLA','Una jornada informática.<br><em>Descubre qué pesa más.</em>','Las decisiones serán sencillas. El reto consiste en descubrir cuáles tienen más efecto, para quién y durante cuánto tiempo.')}
+    <section class="card hero-grid"><div><h2>Tu misión</h2><p>Formas parte de un equipo informático. Hoy vas a decidir cómo desplazarte, preparar la sala, gestionar tu puesto y construir una aplicación.</p><p>Al final verás las estimaciones, podrás imprimir un informe y repetir el recorrido para comparar tus decisiones bajo las mismas condiciones.</p><div class="action-row">${button(a().finished?'Ver mi resultado':count()?'Continuar la jornada':'Empezar la jornada',a().finished?'page:results':'page:travel')}${button('Recuperar una copia','import','secondary')}</div></div><div class="intro-illustration" aria-hidden="true"><svg viewBox="0 0 330 240"><rect x="24" y="24" width="232" height="150" rx="13" fill="#173d31"/><rect x="36" y="36" width="208" height="120" rx="5" fill="#dbeaab"/><path d="M58 129l42-35 32 17 53-49 35 10" stroke="#173d31" stroke-width="7" fill="none" stroke-linejoin="round"/><path d="M193 62h27v27" fill="none" stroke="#173d31" stroke-width="6"/><rect x="124" y="174" width="33" height="25" fill="#173d31"/><rect x="93" y="198" width="96" height="9" rx="4" fill="#173d31"/><circle cx="266" cy="170" r="43" fill="#e7bb86"/><path d="M249 164h33l-8-9m8 9l-8 10M283 180h-33l8 9m-8-9l8-10" fill="none" stroke="#173d31" stroke-width="4" stroke-linecap="round"/></svg></div></section>
+    <section class="card"><h2>El escenario</h2><div class="scenario-chips">${M.scenarioSummary.map(s=>`<span class="scenario-chip">${esc(s)}</span>`).join('')}</div><p class="small muted">Los datos del caso y los factores se mantienen iguales al repetir. La simulación orienta la comparación; no calcula una huella real ni da una nota automática.</p>${initialConfiguration()}</section>
+    <section class="card"><h2>Antes de conocer los resultados</h2><p>¿Qué mejora crees que tendrá más efecto? Puedes ordenar estas cinco del mayor al menor, sin repetir posiciones. Esta predicción es opcional.</p><div class="prediction-grid">${prediction.map(([id,label])=>`<div class="field"><label for="prediction-${id}">${label}</label><select id="prediction-${id}" data-predict="${id}" ${a().finished?'disabled':''}><option value="">Sin ordenar</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${a().prediction[id]===String(n)?'selected':''}>${n===1?'Mayor efecto':n===5?'Menor efecto':'Posición '+n}</option>`).join('')}</select></div>`).join('')}</div><p class="small muted">No hay una clasificación universal. Compararemos tu intuición con el resultado de este escenario concreto.</p></section>
+    <section class="notice"><h3>Primero decides; después comparas</h3><p>Durante el recorrido no se muestran cálculos ni recomendaciones sobre tus elecciones. Al terminar aparecerán las estimaciones de carbono, los cálculos que las explican, los límites del modelo y las condiciones que se cumplen o necesitan revisión.</p></section>`;
+  }
+  function choiceCard(key){
+    const d=M.decisions[key];
+    return `<section class="card decision" id="decision-${key}"><h2>${esc(d.title)}</h2><p>${esc(d.context)}</p><div class="tag scope-tag">${esc(d.scope)}</div>${d.help?`<details class="resource"><summary>Información para decidir</summary><p>${esc(d.help)}</p></details>`:''}<fieldset><legend class="sr-only">${esc(d.title)}</legend><div class="options">${d.options.map(o=>`<label class="option-card ${a().answers[key]===o.id?'selected':''}"><input type="radio" name="answer-${key}" value="${esc(o.id)}" data-answer="${key}" ${a().answers[key]===o.id?'checked':''} ${a().finished?'disabled':''}><span class="option-content"><span class="option-title">${esc(o.label)}</span><span class="option-description">${esc(o.description)}</span></span></label>`).join('')}</div></fieldset><div class="field"><label for="reason-${key}">¿Qué ha pesado más en tu elección? <span class="muted small">Opcional</span></label><textarea id="reason-${key}" data-reason="${key}" maxlength="4000" rows="2" ${a().finished?'readonly':''} placeholder="Una razón breve…">${esc(a().reasons[key]||'')}</textarea></div><p class="small muted decision-status" data-status="${key}">${a().answers[key]?'Elección guardada. El resultado se mostrará al final.':'Selecciona una alternativa para continuar.'}</p></section>`;
+  }
+  function initialConfiguration(){
+    return `<details class="resource"><summary>Qué significa «Configuración inicial del caso»</summary><p>Es una combinación ficticia de opciones definida para este ejercicio. No representa la media de las empresas españolas ni una empresa observada. Las fuentes documentan factores y datos; no esta combinación de decisiones.</p><ul>${keys.filter(k=>!['reuse','waste'].includes(k)).map(k=>`<li><strong>${esc(M.decisions[k].title)}:</strong> ${esc(label(k,M.referenceAnswers[k]))}.</li>`).join('')}</ul><p>En la primera pasada se compara con esta configuración. Desde la segunda, la comparación principal es con tu simulación anterior; la configuración inicial sigue disponible como detalle.</p></details>`;
+  }
+  function scene(){
+    const config={
+      travel:{over:'AL COMENZAR LA JORNADA',heading:'Llegar al trabajo',lead:'Consulta las condiciones del trayecto y elige cómo realizarlo. No hay una pregunta previa sobre qué información consultar.'},
+      room:{over:'UN ESPACIO COMPARTIDO',heading:'Preparar la sala',lead:'Compara las configuraciones de iluminación y calefacción de una oficina de veinte puestos.'},
+      pause:{over:'UNA TAREA SIGUE EN MARCHA',heading:'Hacer una pausa',lead:'El consumo importa, y también lo que necesita continuar funcionando. Esta escena es ficticia: no tienes que suspender el ordenador real.'},
+      data:{over:'DISEÑAR EL INTERCAMBIO',heading:'Qué datos viajan.<br>Y cuándo vuelven.',lead:'La aplicación muestra un catálogo. En estas decisiones cambia el volumen de información y la frecuencia de las solicitudes.'},
+      backend:{over:'TRABAJO QUE NO SE VE',heading:'Procesamiento<br>e infraestructura',lead:'Compara dos formas de localizar registros y dos horarios para un equipo físico dedicado a pruebas.'},
+      ai:{over:'UNA MISMA FUNCIÓN CORRECTA',heading:'Programar una función',lead:'Compara tres procedimientos con su tiempo de trabajo, consultas y pruebas. Los tres terminan con el mismo resultado funcional.'},
+      equipment:{over:'DEL USO AL DESTINO',heading:'Revisar los equipos',lead:'Una decisión afecta a la renovación de un portátil auxiliar. Las otras dos se refieren a aparatos distintos del inventario, para no atribuir dos veces el mismo efecto.'}
+    }[a().page];
+    const list=pageKeys[a().page];
+    const idx=pages.findIndex(p=>p.id===a().page), next=pages[idx+1];
+    return `${hero(config.over,config.heading,config.lead,pages[idx].icon)}${a().finished?`<div class="notice">Esta simulación está finalizada. Puedes revisar sus elecciones; para decidir de nuevo utiliza «Repetir simulación y comparar» en los resultados.</div>`:''}${a().page==='equipment'?normCard():''}${list.map(choiceCard).join('')}<div class="validation" id="scene-error" role="alert" hidden></div><div class="next-row">${button('Anterior','page:'+pages[idx-1].id,'secondary')}${a().page==='equipment'?button(a().finished?'Ver resultados':'Terminar y ver resultados',a().finished?'page:results':'finish'):button('Continuar','next:'+next.id)}</div>`;
+  }
+  function normCard(){
+    return `<section class="norm-card"><h2>Una regla para decidir el destino</h2><p>El artículo 13 del RD 110/2015 distingue dos situaciones:</p><p><strong>Segundo uso viable:</strong> cuando sea posible, destinar el aparato usado a reutilización mediante una vía adecuada.</p><p><strong>Aparato inutilizable:</strong> si no procede ese segundo uso, entregarlo como RAEE conforme al real decreto.</p><p class="small">Resumen didáctico. El caso identifica el estado de cada aparato y el canal disponible. La reducción climática de estos destinos no se cuantifica sin datos suficientes.</p><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-1762#a13" target="_blank" rel="noopener noreferrer">Consultar el artículo en el BOE ↗</a></section>`;
+  }
+  function renderSide(){
+    if(a().finished){$('side-panel').innerHTML=`<div class="board"><h2 class="board-title">Tu siguiente paso</h2><p>Compara las decisiones y elige tus prioridades. Después puedes repetir con el mismo escenario.</p>${button('Ver resultados','page:results','secondary')}${button('Imprimir informe','print','ghost')}<p class="small muted">${state.reference?'El intento anterior permanece guardado para la comparación.':'Tu primera simulación ya está guardada.'}</p></div>`;return;}
+    $('side-panel').innerHTML=`<div class="board"><h2 class="board-title">Tu recorrido</h2><div class="board-item"><span>Decisiones registradas</span><strong>${count()} de ${keys.length}</strong></div><div class="board-item"><span>Resultados</span><strong>Se revelan al final</strong></div><div class="board-item"><span>Comparación</span><strong>${state.reference?'Resultado anterior conservado':'Disponible al repetir'}</strong></div><p class="small muted">Puedes volver a una escena y cambiar de opinión antes de terminar. No se trata de acertar una respuesta difícil, sino de descubrir su importancia.</p></div>`;
+  }
+  function mass(n){const abs=Math.abs(n);return abs<1?`${number(n*1000,abs<0.01?2:1)} g`:`${number(n,abs<10?2:1)} kg`;}
+  function range(x){return `${mass(x.central)} <span class="range">(${mass(x.low)}–${mass(x.high)})</span>`;}
+  function sum(rows,field){return rows.reduce((s,r)=>s+r[field].central,0);}
+  function sameScenario(left,right){return left?.modelVersion===right?.modelVersion&&JSON.stringify(left?.scenario)===JSON.stringify(right?.scenario);}
+  function savingsCell(diff){if(Math.abs(diff)<1e-9)return '<span class="muted">Sin cambio</span>';return `<span class="${diff>=0?'saving':'increase'}">${diff>=0?'−':'+'}${mass(Math.abs(diff))}</span>`;}
+
+  function displayRows(record){
+    if(!state.reference||!sameScenario(record,state.reference))return record.calculation.rows;
+    return record.calculation.rows.map(r=>({...r,reference:state.reference.calculation.rows.find(p=>p.id===r.id)?.chosen||r.reference}));
+  }
+  function baseLabel(record){return state.reference&&sameScenario(record,state.reference)?'Simulación anterior':'Configuración inicial del caso';}
+  function resultTable(rows,showReference=true,referenceLabel='Configuración inicial del caso'){
+    return `<div class="table-wrap"><table class="data-table result-table"><caption>Valores en CO₂ equivalente por año; los intervalos muestran sensibilidad a los supuestos, no confianza estadística.</caption><thead><tr><th>Parte del caso y alcance</th>${showReference?'<th>'+esc(referenceLabel)+'</th>':''}<th>Tu elección e intervalo</th>${showReference?'<th>Cambio central</th>':''}</tr></thead><tbody>${rows.map(r=>'<tr><th scope="row">'+esc(r.label)+'<span class="scope-note">'+esc(r.scope)+'</span></th>'+(showReference?'<td>'+mass(r.reference.central)+'</td>':'')+'<td>'+range(r.chosen)+'</td>'+(showReference?'<td>'+savingsCell(r.reference.central-r.chosen.central)+'</td>':'')+'</tr>').join('')}</tbody></table></div>`;
+  }
+  function bars(rows,referenceLabel='Configuración inicial del caso'){
+    const max=Math.max(1,...rows.flatMap(r=>[r.reference.central,r.chosen.central]));
+    return `<div class="chart" aria-label="Emisiones centrales por parte del caso"><p class="small muted"><span class="legend-dot reference-dot"></span> ${esc(referenceLabel)} <span class="legend-dot chosen-dot"></span> Tus elecciones · Misma escala lineal</p>${rows.map(r=>'<div class="chart-row"><div class="chart-label">'+esc(r.label)+'</div><div class="chart-tracks"><div class="bar reference-bar" style="width:'+r.reference.central/max*100+'%" title="'+esc(referenceLabel)+': '+mass(r.reference.central)+'"></div><div class="bar chosen-bar" style="width:'+r.chosen.central/max*100+'%" title="Tu elección: '+mass(r.chosen.central)+'"></div></div><div class="chart-number">'+mass(r.chosen.central)+'</div></div>').join('')}</div>`;
+  }
+
+  function comparison(current,previous){
+    if(!previous)return `<section class="notice"><h3>Tu primera simulación ya está guardada</h3><p>Ahora puedes imprimirla o repetir el recorrido. Las respuestas se vaciarán y este resultado quedará conservado para compararlo con la siguiente pasada.</p></section>`;
+    if(!sameScenario(current,previous))return `<section class="notice warning"><h3>Las condiciones de estos registros son distintas</h3><p>Se conservan ambos resultados, pero no calculamos una mejora directa porque han cambiado el escenario o la versión del modelo.</p></section>`;
+    const before=sum(previous.calculation.rows,'chosen'),now=sum(current.calculation.rows,'chosen'),diff=before-now;
+    const pct=before>0?`${number(Math.abs(diff)/before*100,1)} %`:null;
+    const changes=keys.filter(k=>current.answers[k]!==previous.answers[k]);
+    return `<section class="card comparison-card"><div class="eyebrow">MISMO ESCENARIO · MISMO MODELO</div><h2>Tu anterior simulación y la actual</h2><div class="feedback-grid"><div class="metric"><span>Simulación anterior</span><strong class="metric-value">${mass(before)}</strong><span>CO₂e al año · conjunto modelado</span></div><div class="metric"><span>Simulación actual</span><strong class="metric-value">${mass(now)}</strong><span>CO₂e al año · conjunto modelado</span></div></div><p class="comparison-delta">${diff===0?'El total central no ha cambiado.':diff>0?`Has reducido ${mass(diff)} de CO₂e al año${pct?' ('+pct+')':''}.`:`El total aumenta ${mass(-diff)} de CO₂e al año${pct?' ('+pct+')':''}.`}</p><p class="small muted">La diferencia es entre estimaciones centrales. Los intervalos del modelo y las condiciones de servicio siguen siendo relevantes.</p><div class="table-wrap"><table class="data-table"><thead><tr><th>Parte del caso</th><th>Anterior</th><th>Actual</th><th>Cambio central</th></tr></thead><tbody>${current.calculation.rows.map(r=>{const p=previous.calculation.rows.find(x=>x.id===r.id);return `<tr><th scope="row">${esc(r.label)}</th><td>${p?mass(p.chosen.central):'No comparable'}</td><td>${mass(r.chosen.central)}</td><td>${p?savingsCell(p.chosen.central-r.chosen.central):'—'}</td></tr>`;}).join('')}</tbody></table></div><h3>Qué has cambiado</h3>${changes.length?`<ul>${changes.map(k=>`<li><strong>${esc(M.decisions[k].title)}</strong><br><span class="muted">${esc(label(k,previous.answers[k]))}</span> → ${esc(label(k,current.answers[k]))}</li>`).join('')}</ul>`:'<p>Has elegido las mismas alternativas en ambos intentos. Las explicaciones y prioridades pueden seguir siendo distintas.</p>'}<p class="small">Las mejoras de la aplicación se comparan juntas: no atribuimos el mismo ahorro dos veces a transferencia, solicitudes y procesamiento.</p></section>`;
+  }
+  function checks(result){return `<section class="card"><h2>Las condiciones también cuentan</h2><div class="checks-list">${result.checks.map(c=>`<div class="check-item ${c.status==='ok'?'check-ok':'check-review'}"><span class="check-icon" aria-hidden="true">${c.status==='ok'?'✓':'!'}</span><div><h3>${esc(c.label)}</h3><p>${esc(c.message)}</p></div></div>`).join('')}</div><p class="small muted">La gestión de RAEE se valora aquí. No se asigna un ahorro climático de cero ni una cifra inventada a esas dos decisiones.</p></section>`;}
+  function explanations(rows){return `<section class="card"><h2>De dónde sale cada resultado</h2>${rows.map(r=>`<details class="resource"><summary>${esc(r.label)}</summary><p>${esc(r.explanation)}</p><p class="small">${r.sourceIds.map(id=>{const s=M.sources.find(x=>x.id===id);return s?.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}</a>`:esc(s?.label||id);}).join(' · ')}</p></details>`).join('')}</section>`;}
+  function resultReflections(record){
+    const choices=record.calculation.rows.map(r=>[r.id,r.label]).concat([['reuse','Segundo uso de equipos'],['waste','Gestión de RAEE']]);
+    return `<section class="card"><h2>Si puedes impulsar tres cambios…</h2><p>Escoge tus prioridades después de ver los resultados. Puedes valorar también una obligación ambiental que no tenga cifra de carbono.</p><div class="prediction-grid">${[0,1,2].map(i=>`<div class="field"><label for="priority-${i}">Prioridad ${i+1}</label><select id="priority-${i}" data-reflection-priority="${i}"><option value="">Elige una actuación</option>${choices.map(([id,label])=>`<option value="${esc(id)}" ${record.reflection.priorities[i]===id?'selected':''}>${esc(label)}</option>`).join('')}</select></div>`).join('')}</div><div class="field"><label for="final-reason">¿Qué datos justifican tus prioridades y quién puede aplicarlas?</label><textarea id="final-reason" data-reflection="reason" rows="3" maxlength="4000">${esc(record.reflection.reason)}</textarea></div><div class="field"><label for="final-robust">¿Qué prioridad mantendrías si cambiasen los supuestos?</label><textarea id="final-robust" data-reflection="robust" rows="2" maxlength="4000">${esc(record.reflection.robust)}</textarea></div><p class="small muted">Las respuestas se incorporan automáticamente al informe. No son necesarias para poder imprimirlo.</p></section>`;
+  }
+
+  function initialOverview(record){
+    const rows=record.calculation.rows,ref=sum(rows,'reference'),chosen=sum(rows,'chosen'),saved=ref-chosen;
+    return `<section class="card report-cover"><div class="feedback-grid"><div class="metric"><span>Configuración inicial del caso</span><strong class="metric-value">${mass(ref)}</strong><span>CO₂e al año</span></div><div class="metric"><span>Tus elecciones</span><strong class="metric-value">${mass(chosen)}</strong><span>CO₂e al año</span></div></div><p class="comparison-delta">${Math.abs(saved)<1e-9?'El total central coincide con la configuración inicial.':saved>0?mass(saved)+' de CO₂e menos al año frente a la configuración inicial.':mass(-saved)+' de CO₂e más al año frente a la configuración inicial.'}</p><p>La configuración inicial es una combinación ficticia de decisiones elegida para este ejercicio. No representa una empresa observada ni una media española.</p>${initialConfiguration()}<p class="small">El conjunto incluye un trayecto y un puesto individuales, una sala compartida, un servicio digital completo y fabricación anualizada. No es un inventario de toda la empresa.</p></section>`;
+  }
+  function results(){
+    const record=state.lastCompleted;if(!a().finished||!record)return '';
+    const rows=record.calculation.rows,view=displayRows(record),from=baseLabel(record),hasPrevious=state.reference&&sameScenario(record,state.reference);
+    const ranked=[...view].sort((x,y)=>Math.abs(y.reference.central-y.chosen.central)-Math.abs(x.reference.central-x.chosen.central));
+    const top=ranked.filter(r=>Math.abs(r.reference.central-r.chosen.central)>1e-9).slice(0,3);
+    const headline=hasPrevious?'Tu simulación anterior<br><em>y tus nuevas elecciones.</em>':'Ahora sí:<br><em>¿qué ha pesado más?</em>';
+    return hero('RESULTADOS · MISMO HORIZONTE ANUAL',headline,hasPrevious?'La comparación principal usa tu anterior simulación terminada, con las mismas condiciones y factores. La configuración inicial del ejercicio permanece disponible como detalle.':'Compara tus elecciones con una configuración inicial ficticia y explícita del ejercicio. Son estimaciones educativas y parciales, no una huella real.','▥')+
+      (hasPrevious?comparison(record,state.reference)+'<details class="resource initial-comparison"><summary>Comparar también con la configuración inicial del caso</summary>'+initialOverview(record)+'</details>':initialOverview(record)+comparison(record,state.reference))+
+      '<section class="card"><h2>El peso de tus decisiones</h2>'+bars(view,from)+resultTable(view,true,from)+'<p class="small muted">Cambio central respecto a '+esc(from.toLowerCase())+': «−» representa menos emisiones; «+», más. Un intervalo no equivale a una medición real.</p></section>'+
+      '<section class="card"><h2>Qué decisiones explican las diferencias</h2>'+(top.length?'<ol class="impact-ranking">'+top.map(r=>{const d=r.reference.central-r.chosen.central;return '<li><strong>'+esc(r.label)+'</strong><span>'+mass(Math.abs(d))+' de CO₂e '+(d>0?'menos':'más')+' al año</span></li>';}).join('')+'</ol>':'<p>Las emisiones centrales de tus elecciones coinciden con '+esc(from.toLowerCase())+'.</p>')+'<p class="small">Diferencias respecto a '+esc(from.toLowerCase())+', con la población y frecuencia del caso. No es un orden universal de importancia.</p>'+
+      (Object.values(record.prediction).some(Boolean)?'<h3>Tu predicción inicial</h3><ul>'+prediction.filter(([id])=>record.prediction[id]).sort((x,y)=>Number(record.prediction[x[0]])-Number(record.prediction[y[0]])).map(([id,label])=>'<li>'+esc(label)+' · posición '+esc(record.prediction[id])+'</li>').join('')+'</ul><p>¿Qué intuición mantienes y cuál revisarías ahora?</p>':'')+'</section>'+
+      checks(record.calculation)+explanations(rows)+'<section class="card"><h2>Supuestos que delimitan la comparación</h2><ul>'+record.calculation.notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></section>'+resultReflections(record)+
+      '<section class="card"><h2>Conservar, imprimir y volver a probar</h2><p>El informe reúne automáticamente el escenario, las elecciones, sus resultados y, si existe, la comparación con el intento anterior.</p><div class="export-row">'+button('Imprimir / guardar PDF','print')+button('Ver informe / copiar','report','secondary')+button('Guardar copia recuperable','save-copy','secondary')+button('Repetir simulación y comparar','repeat-dialog','secondary')+button('Cambiar la escala','page:explore','ghost')+'</div><p class="small muted">Esta versión conserva sus propios intentos en este navegador. No modifica los registros de la versión anterior. Para otro dispositivo, utiliza una copia recuperable.</p></section>';
+  }
+
+  function explore(){
+    const record=state.lastCompleted;if(!record)return '';
+    const exp=M.calculate(record.answers,experiment),base=record.calculation;
+    return `${hero('EXPERIMENTO · NO MODIFICA TUS INTENTOS','¿Y si cambia<br>la escala?','Aquí varían las condiciones. Este experimento se mantiene separado de las dos simulaciones comparables.','↔')}<section class="card"><h2>Cambia un supuesto cada vez</h2><div class="form-grid"><div class="field"><label for="experiment-users">Usuarios diarios de la aplicación</label><select id="experiment-users" data-experiment="appUsers">${[10,100,1000,10000,100000].map(n=>`<option value="${n}" ${experiment.appUsers===n?'selected':''}>${number(n,0)} usuarios</option>`).join('')}</select></div><div class="field"><label for="experiment-days">Días de actividad al año</label><select id="experiment-days" data-experiment="workdays">${[100,180,220,260].map(n=>`<option value="${n}" ${experiment.workdays===n?'selected':''}>${n} días</option>`).join('')}</select></div></div><p class="small muted">Escenario guardado: ${number(M.scenario.appUsers,0)} usuarios diarios y ${M.scenario.workdays} días. Tus resultados anteriores no se recalculan ni se sustituyen.</p>${button('Volver a las condiciones del caso','reset-experiment','secondary')}</section><section class="card"><h2>Qué cambia con estas condiciones</h2><div class="table-wrap"><table class="data-table"><thead><tr><th>Parte del caso</th><th>Tu simulación guardada</th><th>Experimento</th></tr></thead><tbody>${exp.rows.map(r=>{const old=base.rows.find(x=>x.id===r.id);return `<tr><th scope="row">${esc(r.label)}</th><td>${old?mass(old.chosen.central):'—'}</td><td>${range(r.chosen)}</td></tr>`;}).join('')}</tbody></table></div><p>¿Qué decisiones ganan importancia cuando la aplicación crece? ¿Cuáles dependen principalmente del tiempo de uso?</p></section><div class="next-row">${button('Volver al resultado guardado','page:results')}</div>`;
+  }
+  function validatePage(){
+    capture();const missing=(pageKeys[a().page]||[]).filter(k=>!a().answers[k]);
+    if(missing.length){$('scene-error').textContent='Queda una decisión por responder en esta pantalla.';$('scene-error').hidden=false;document.querySelector(`[data-answer="${missing[0]}"]`)?.focus();return false;}return true;
+  }
+  function finish(){
+    capture();const missing=keys.filter(k=>!a().answers[k]);
+    if(missing.length){go(M.decisions[missing[0]].page);$('scene-error').textContent='Completa las decisiones pendientes antes de ver los resultados.';$('scene-error').hidden=false;return;}
+    try{
+      const calculation=checkResult(M.calculate(copy(a().answers)));
+      const record={id:a().id,completedAt:new Date().toISOString(),modelVersion:M.version,scenario:copy(M.scenario),answers:copy(a().answers),reasons:copy(a().reasons),prediction:copy(a().prediction),calculation,sources:copy(M.sources),reflection:copy(a().reflection)};
+      state.lastCompleted=record;a().finished=true;a().page='results';render();window.scrollTo(0,0);$('scene').querySelector('h1')?.focus({preventScroll:true});history.replaceState(null,'','#results');toast('Simulación terminada y guardada.');
+    }catch(e){toast('No se han podido generar los resultados. Tus elecciones se conservan.');console.error(e);}
+  }
+  function modal(title,body){$('modal').innerHTML=`<h2 id="modal-title">${title}</h2>${body}`;$('modal').showModal();}
+  function repeatDialog(){
+    if(!state.lastCompleted)return restartDialog();
+    modal('Repetir simulación y comparar',`<p>Conservaremos el último resultado terminado. Empezarás con respuestas, predicción y progreso vacíos, bajo las mismas condiciones y factores.</p><p>Si cierras a mitad, podrás continuar sin perder el resultado anterior.</p><div class="modal-actions">${button('Cancelar','close-modal','secondary')}${button('Empezar nueva pasada','repeat-confirm')}</div>`);
+  }
+  function restartDialog(){
+    if(a().finished)return repeatDialog();
+    modal('Reiniciar el recorrido actual',`<p>Se vaciarán las elecciones y textos de este recorrido. ${state.reference?'La simulación anterior usada como referencia se conservará.':'Puedes guardar una copia antes de continuar.'}</p><div class="modal-actions">${button('Guardar copia','save-copy','secondary')}${button('Cancelar','close-modal','secondary')}${button('Reiniciar recorrido','restart-confirm')}</div>`);
+  }
+  function repeat(){
+    if(!state.lastCompleted)return;
+    state.reference=copy(state.lastCompleted);state.active=newAttempt();blocked=false;$('print-report').innerHTML='';$('modal').close();render();window.scrollTo(0,0);history.replaceState(null,'','#intro');toast('Anterior conservada. Nueva simulación preparada.');
+  }
+  function sources(){
+    modal('Fuentes y supuestos del escenario',`<p>Modelo educativo con factores publicados y supuestos fijos. Las dos simulaciones usan los mismos valores; el experimento de escala es independiente.</p><ul>${M.scenarioSummary.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>${M.sources.map(s=>`<div class="source-entry"><h3>${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)} ↗</a>`:esc(s.label)}</h3><p>${esc(s.note)}</p></div>`).join('')}<div class="modal-actions">${button('Volver a la jornada','close-modal')}</div>`);
+  }
+  function reportText(){
+    const current=state.lastCompleted;if(!current)return 'La simulación todavía no ha terminado.';
+    const r=current.calculation,view=displayRows(current),from=baseLabel(current);
+    const lines=['UNA JORNADA INFORMÁTICA · INFORME EDUCATIVO',new Date(current.completedAt).toLocaleString('es-ES',{timeZone:'Europe/Madrid'}),'Estimaciones orientativas en CO₂ equivalente. No es una huella real ni una calificación.','',...M.scenarioSummary,'','RESULTADOS ANUALES DEL CONJUNTO MODELADO',`${from}: ${mass(sum(view,'reference'))} CO₂e/año.`,`Tu elección: ${mass(sum(r.rows,'chosen'))} CO₂e/año.`,''];
+    for(const row of view)lines.push(row.label,row.scope,`${from}: ${mass(row.reference.central)}. Elegido: ${mass(row.chosen.central)}. Intervalo: ${mass(row.chosen.low)}–${mass(row.chosen.high)} CO₂e/año.`,row.explanation,'');
+    if(state.reference){lines.push('COMPARACIÓN CON LA SIMULACIÓN ANTERIOR');if(sameScenario(current,state.reference)){const before=sum(state.reference.calculation.rows,'chosen'),now=sum(r.rows,'chosen');lines.push(`Anterior: ${mass(before)}. Actual: ${mass(now)}. Diferencia: ${mass(before-now)} CO₂e/año (positivo: reducción).`);for(const key of keys)if(current.answers[key]!==state.reference.answers[key])lines.push(`${M.decisions[key].title}: ${label(key,state.reference.answers[key])} → ${label(key,current.answers[key])}`);}else lines.push('Escenario o modelo diferente: no se calcula una mejora directa.');lines.push('');}
+    lines.push('ELECCIONES Y ARGUMENTOS');for(const key of keys)lines.push(M.decisions[key].title,label(key,current.answers[key]),current.reasons[key]?'Motivo: '+current.reasons[key]:'Sin justificación escrita.','');
+    lines.push('CONDICIONES Y GESTIÓN DE EQUIPOS');for(const c of r.checks)lines.push(`${c.status==='ok'?'Conforme al caso':'Revisar'} · ${c.label}: ${c.message}`);
+    lines.push('','PRIORIDADES FINALES');const names=Object.fromEntries(r.rows.map(x=>[x.id,x.label]));names.reuse='Segundo uso';names.waste='Gestión de RAEE';current.reflection.priorities.forEach((id,i)=>lines.push(`${i+1}. ${names[id]||'Sin indicar'}`));lines.push(current.reflection.reason||'Sin justificación final.',current.reflection.robust||'Sin reflexión sobre los supuestos.','','LÍMITES Y SUPUESTOS',...r.notes,'','FUENTES');for(const source of current.sources)lines.push(source.label,source.url,source.note,'');return lines.join('\n');
+  }
+  function printMarkup(){
+    const r=state.lastCompleted;if(!a().finished||!r)return '<h1>Una jornada informática</h1><p>Completa el recorrido para generar el informe de resultados.</p>';
+    return `<header><p class="eyebrow">SOS · INFORME DE LA SIMULACIÓN</p><h1>Una jornada informática</h1><p>${esc(new Date(r.completedAt).toLocaleString('es-ES',{timeZone:'Europe/Madrid'}))}</p><p>Estimación educativa. No es una huella real ni una calificación.</p></header><section><h2>Escenario y alcance</h2><ul>${M.scenarioSummary.map(s=>`<li>${esc(s)}</li>`).join('')}</ul><p>Conjunto parcial: un trayecto y puesto individuales, sala compartida, aplicación completa y fabricación anualizada. Los alcances de cada fila son distintos y explícitos.</p></section>${state.reference?comparison(r,state.reference):''}<section><h2>Resultados frente a ${esc(baseLabel(r).toLowerCase())}</h2>${resultTable(displayRows(r),true,baseLabel(r))}</section><section><h2>Configuración inicial del ejercicio</h2><p>Combinación ficticia definida para el caso, no una media real. Su total central es ${mass(sum(r.calculation.rows,'reference'))} CO₂e al año.</p></section><section><h2>Elecciones y argumentos</h2>${keys.map(k=>`<div class="print-choice"><h3>${esc(M.decisions[k].title)}</h3><p><strong>${esc(label(k,r.answers[k]))}</strong></p>${r.reasons[k]?`<p>${esc(r.reasons[k])}</p>`:''}</div>`).join('')}</section>${checks(r.calculation)}<section><h2>Prioridades y reflexión</h2><ol>${r.reflection.priorities.map(id=>`<li>${esc(r.calculation.rows.find(x=>x.id===id)?.label||(id==='reuse'?'Segundo uso':id==='waste'?'Gestión de RAEE':'Sin indicar'))}</li>`).join('')}</ol><p>${esc(r.reflection.reason||'Sin justificación escrita.')}</p><p>${esc(r.reflection.robust||'Sin reflexión adicional.')}</p></section><section><h2>De dónde salen las cifras</h2>${r.calculation.rows.map(x=>`<h3>${esc(x.label)}</h3><p>${esc(x.explanation)}</p>`).join('')}<h2>Límites</h2><ul>${r.calculation.notes.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></section><section><h2>Fuentes</h2>${r.sources.map(s=>`<p><strong>${esc(s.label)}</strong><br>${esc(s.url)}<br>${esc(s.note)}</p>`).join('')}</section>`;
+  }
+  function reportDialog(){modal('Informe automatizado',`<div class="field"><label for="report-text">Puedes leerlo o copiarlo</label><textarea id="report-text" rows="16" readonly>${esc(reportText())}</textarea></div><div class="modal-actions">${button('Seleccionar texto','select-report','secondary')}${button('Imprimir / guardar PDF','print','secondary')}${button('Cerrar','close-modal')}</div>`);}
+  function copyDialog(){
+    capture();persist();
+    modal('Guardar una copia recuperable',`<p>La copia incluye el recorrido actual y los resultados conservados. Sirve para recuperarlos en este u otro navegador.</p><div class="modal-actions">${button('Descargar copia JSON','download-copy')}${button('Ver texto de la copia','show-json','secondary')}${button('Recuperar un archivo','import','secondary')}${button('Cerrar','close-modal','secondary')}</div>`);
+  }
+  function download(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),el=document.createElement('a');el.href=url;el.download='SOS_simulaciones_v2.json';document.body.appendChild(el);el.click();el.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('Copia preparada para descargar. También puedes ver su texto.');}
+  function updateReflection(target){
+    if(!a().finished||!state.lastCompleted)return;
+    const r=state.lastCompleted.reflection;
+    if(target.dataset.reflectionPriority!=null)r.priorities[Number(target.dataset.reflectionPriority)]=target.value;
+    if(target.dataset.reflection)r[target.dataset.reflection]=target.value;
+    a().reflection=copy(r);persist();
+  }
+  function action(name){
+    if(name==='close-modal')return $('modal').close();
+    if(name==='select-report'){$('report-text').focus();$('report-text').select();toast('Texto seleccionado. Usa Copiar o Ctrl+C.');return;}
+    if(name==='sources')return sources();
+    if(name==='restart-dialog')return restartDialog();
+    if(name==='repeat-dialog')return repeatDialog();
+    if(name==='repeat-confirm')return repeat();
+    if(name==='restart-confirm'){state.active=newAttempt();blocked=false;$('print-report').innerHTML='';$('modal').close();render();history.replaceState(null,'','#intro');window.scrollTo(0,0);return;}
+    if(name.startsWith('page:'))return go(name.slice(5));
+    if(name.startsWith('next:')){if(validatePage())go(name.slice(5));return;}
+    if(name==='finish')return finish();
+    if(name==='reset-experiment'){experiment={appUsers:M.scenario.appUsers,workdays:M.scenario.workdays};render();return;}
+    if(name==='save-copy')return copyDialog();
+    if(name==='download-copy')return download();
+    if(name==='show-json'){modal('Texto de la copia recuperable',`<div class="field"><label for="report-text">Copia el texto completo para conservarlo en un archivo .json</label><textarea id="report-text" rows="15" readonly>${esc(JSON.stringify(state,null,2))}</textarea></div><div class="modal-actions">${button('Seleccionar texto','select-report','secondary')}${button('Cerrar','close-modal')}</div>`);return;}
+    if(name==='import'){$('import-file').value='';$('import-file').click();return;}
+    if(name==='report')return reportDialog();
+    if(name==='print'){if(!a().finished){toast('Termina la simulación para imprimir el informe.');return;}$('print-report').innerHTML=printMarkup();window.print();return;}
+  }
+  document.addEventListener('click',event=>{const target=event.target.closest('[data-action],[data-page]');if(!target)return;if(target.dataset.action)action(target.dataset.action);else if(target.dataset.page)go(target.dataset.page);});
+  document.addEventListener('input',event=>{
+    const target=event.target;
+    if(target.matches('[data-answer],[data-reason],[data-predict]')){
+      capture();
+      if(target.dataset.answer){const key=target.dataset.answer;document.querySelectorAll(`[data-answer="${key}"]`).forEach(r=>r.closest('.option-card').classList.toggle('selected',r.checked));const status=document.querySelector(`[data-status="${key}"]`);if(status)status.textContent='Elección guardada. El resultado se mostrará al final.';$('scene-error')?.setAttribute('hidden','');$('progress-label').textContent=`${count()} de ${keys.length} decisiones registradas`;$('progress-fill').style.width=count()/keys.length*100+'%';$('progress').setAttribute('aria-valuenow',count());renderSide();}
+      if(target.dataset.predict){const used=Object.values(a().prediction).filter(Boolean);if(new Set(used).size!==used.length)toast('Hay posiciones repetidas en tu predicción. Puedes corregirlas o dejarlas sin ordenar.');}
+      clearTimeout(saveTimer);saveTimer=setTimeout(persist,200);
+    }
+    if(target.matches('[data-reflection],[data-reflection-priority]'))updateReflection(target);
+  });
+  document.addEventListener('change',event=>{
+    if(event.target.matches('[data-predict]')){capture();persist();}
+    if(event.target.matches('[data-reflection-priority]'))updateReflection(event.target);
+    if(event.target.matches('[data-experiment]')){experiment[event.target.dataset.experiment]=Number(event.target.value);render();}
+  });
+  $('import-file').addEventListener('change',async event=>{
+    const file=event.target.files[0];if(!file)return;if(file.size>2000000){toast('El archivo supera el tamaño previsto para estas simulaciones.');return;}
+    try{
+      const incoming=validate(JSON.parse(await file.text()));
+      modal('Recuperar una copia',`<p>Se recuperará el recorrido y ${incoming.lastCompleted?'su resultado terminado':'el progreso guardado'}${incoming.reference?', con la referencia anterior':''}. Sustituirá lo que hay ahora en este navegador.</p><div class="modal-actions">${button('Guardar copia actual','save-copy','secondary')}${button('Cancelar','close-modal','secondary')}<button type="button" class="btn primary" id="accept-import">Recuperar copia</button></div>`);
+      $('accept-import').addEventListener('click',()=>{state=incoming;blocked=false;$('modal').close();render();history.replaceState(null,'',`#${a().page}`);window.scrollTo(0,0);toast('Simulaciones recuperadas.');},{once:true});
+    }catch(e){toast('No se ha recuperado el archivo: '+e.message);}
+  });
+  window.addEventListener('beforeunload',()=>{capture();persist();});
+  window.addEventListener('beforeprint',()=>{$('print-report').innerHTML=printMarkup();});
+  window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(pages.some(p=>p.id===id)&&id!==a().page)go(id);});
+  const initial=location.hash.slice(1);if(pages.some(p=>p.id===initial)&&(!['results','explore'].includes(initial)||a().finished))a().page=initial;
+  render();
+})();
+</script>
+</body>
+</html>
